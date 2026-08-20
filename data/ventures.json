@@ -203,9 +203,9 @@
     "productName": "Spades & Bones",
     "code": "FAM",
     "category": "Social Multiplayer Gaming",
-    "status": "In Development",
-    "url": null,
-    "urlLabel": null,
+    "status": "Live",
+    "url": "https://family-reunion-spades-bones.vercel.app",
+    "urlLabel": "family-reunion-spades-bones.vercel.app",
     "ogImage": "/assets/og-image.png",
     "ogAlt": "Family Reunion: Spades & Bones — Social Multiplayer Gaming, a Sovereign Valor Group venture.",
     "tagline": "A social multiplayer gaming app built around the family table — Spades first, Dominoes next — with private family rooms, house rules, AI opponents who talk their share of mess, and live video seats around the board.",
@@ -230,6 +230,6 @@
       }
     ],
     "roadmap": "Table first. Everything else after.",
-    "closing": "Family Reunion is in active development. Reach out to follow its progress or get early access."
+    "closing": "Family Reunion is live. Pull up a chair, deal a hand of Spades, and see the reunion table for yourself."
   }
 ]
