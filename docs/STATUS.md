@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-08-20
 **Branch:** `main` — rebuild merged and **deployed**
-**Deployed commit:** `11bc0a4` "Fix page content showing through the open mobile menu"
+**Deployed commit:** `f759697` "Family Reunion is live"
 
 ---
 
@@ -26,7 +26,7 @@ Post-deploy verification (2026-08-20), all returning 200:
 7 × `/ventures/<id>.html` · `/privacy.html` · `/terms.html` ·
 `/accessibility.html` · `/sitemap.xml` · `/robots.txt`
 
-Confirmed live: correct venture statuses (Beta / Live / Live / In Development ×4),
+Confirmed live: correct venture statuses (Beta ×1, Live ×3, In Development ×3),
 JSON-LD present, GA4 tag emitted on every page, Formspree action on the contact
 form, and the privacy policy's analytics disclosure showing alongside the tag.
 
@@ -50,7 +50,7 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 | SEO metadata | ✅ Complete — unique titles/descriptions/canonicals/OG per page |
 | Structured data | ✅ Complete — Organization + ProfessionalService + WebSite + 7 × SoftwareApplication |
 | Internal links | ✅ 646 crawled, 0 broken |
-| Outbound venture links | ✅ All 6 verified 200 |
+| Outbound venture links | ✅ All 7 verified 200 |
 
 ---
 
@@ -63,7 +63,7 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 | **Legal pages** | Drafts written this session. Accurate to how the site actually behaves (no tracking cookies, GitHub Pages, Google Fonts, mailto contact). | Qualified review before relying on them. |
 | **Venture logos** | 3-letter monogram tiles (DAV, OPS, LUM…). | Supply artwork if these should be real logos. |
 | **Family Reunion OG card** | Falls back to the generic SVG share image. | Generate a 1200×630 card to match the other six. |
-| **Family Reunion name** | Defaulted to "Family Reunion" with "Spades & Bones" as subtitle — **the naming question was never answered**. | Confirm; it's one line in `data/ventures.json`. |
+| **Family Reunion name** | "Family Reunion" with "Spades & Bones" as subtitle — matches the live app's own title. | Settled. |
 | **Image optimization** | Untouched. `svg-logo-mark.png` is 252 KB for a 50 px slot; `assets/` ≈ 1.4 MB. | Add `sharp` as a build-only devDependency. |
 
 ---
@@ -86,10 +86,10 @@ After deploy: verify the property in Google Search Console and submit
 or `robots.txt`, so this is the largest single SEO gain available.
 
 ### 4. Move ventures onto first-party subdomains
-Four ventures still sit on raw `*.vercel.app` slugs — `lumira-kohl` and
-`vocasa-seven` read as auto-generated. `awa.sovereignvalorgroup.com` already
-proves the pattern works. DNS + Vercel domain settings only; no code, and the
-registry makes each URL a one-line update.
+Five ventures now sit on raw `*.vercel.app` slugs — `lumira-kohl`,
+`vocasa-seven`, and `family-reunion-spades-bones` read as auto-generated.
+`awa.sovereignvalorgroup.com` already proves the pattern works. DNS + Vercel
+domain settings only; no code, and the registry makes each URL a one-line update.
 
 ### 5. Optimize images
 Largest remaining performance item, and it directly affects LCP on every page.

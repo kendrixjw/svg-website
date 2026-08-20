@@ -302,3 +302,25 @@ than scrolling to it.
 - [x] ~~`README.md` is stale~~ — rewritten 2026-08-20 for the registry workflow
       and the correct host (GitHub Pages, not Vercel/Netlify)
 - [ ] Decide the fate of the legacy `sovereign-valor-group-website/` directory
+
+---
+
+## 2026-08-20 — Family Reunion is live
+
+Commit `f759697`, deployed and verified.
+
+Owner reported the app had shipped. URL verified before use:
+`https://family-reunion-spades-bones.vercel.app` → 200, title
+"Family Reunion: Spades & Bones".
+
+Registry entry updated: `status` → `Live`, `url` and `urlLabel` set, closing copy
+rewritten from "in active development" to reflect a shipped product. One edit to
+`data/ventures.json` propagated to the homepage roster row, the ventures index,
+the detail page hero and At-a-Glance, both outbound CTAs, and the
+`SoftwareApplication` schema node.
+
+The live app's own title uses both names, which confirms the naming default
+chosen earlier — venture "Family Reunion", product "Spades & Bones". That
+question is now settled.
+
+Venture status spread is now: Beta ×1, Live ×3, In Development ×3.
