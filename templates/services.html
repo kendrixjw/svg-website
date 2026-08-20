@@ -1,0 +1,39 @@
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">What We Do</p>
+        <h1>Strategy is only useful when it can be <em>executed.</em></h1>
+        <p>Sovereign Valor Group helps organizations move from intent to operating reality — planning the work, structuring the delivery, connecting the systems, and building the products that carry it.</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="service-grid">
+{{#each site.services}}        <article class="card service-card reveal" id="{{id}}">
+          <div class="service-icon" aria-hidden="true">{{{iconSvg}}}</div>
+          <h2 style="font-size:1.28rem; font-family:'Public Sans',sans-serif; font-weight:700; letter-spacing:-.01em;">{{name}}</h2>
+          <p>{{body}}</p>
+          <a class="button ghost" href="/contact.html" data-event="service_click" data-service-name="{{name}}" data-cta-location="services_page">Start a Project &rarr;</a>
+        </article>
+{{/each}}      </div>
+    </section>
+
+    <section class="ventures">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Proof of Work</p>
+          <h2>We don't just advise on execution — we practice it.</h2>
+          <p>Sovereign Valor Group builds and operates its own portfolio of digital products. The same planning, engineering, and delivery discipline we sell is the discipline we ship with.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button primary" href="/ventures/" data-event="venture_view" data-cta-location="services_page">Explore Our Ventures &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="cta-panel reveal">
+        <h2>Ready to start?</h2>
+        <p>Tell us the objective, the obstacles, and the timeline. We'll tell you what it takes to get there.</p>
+        <a class="button primary" href="/contact.html" data-event="consultation_click" data-cta-location="services_footer">Schedule a Consultation</a>
+      </div>
+    </section>

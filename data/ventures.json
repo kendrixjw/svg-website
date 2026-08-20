@@ -1,0 +1,235 @@
+[
+  {
+    "id": "devotion-after-victory",
+    "name": "Devotion After Victory",
+    "code": "DAV",
+    "category": "Community Platform",
+    "status": "Beta",
+    "url": "https://devotionaftervictory.com",
+    "urlLabel": "devotionaftervictory.com",
+    "ogImage": "/assets/og-image-dav.png",
+    "ogAlt": "Devotion After Victory — a community platform for the veteran community, by Sovereign Valor Group.",
+    "tagline": "A connection platform built for the veteran community — bringing people who have served, and those who value that service, together with intention and respect.",
+    "metaDescription": "Devotion After Victory is a connection platform built for the veteran community — bringing those who have served, and those who value that service, together with intention and respect. A Sovereign Valor Group venture.",
+    "ogDescription": "A connection platform built for the veteran community — bringing those who served together with intention and respect.",
+    "atAGlance": [
+      "Purpose-built for veterans",
+      "Intentional, respectful connection",
+      "Community over noise",
+      "Built under the SVG standard"
+    ],
+    "sectionEyebrow": "The Mission",
+    "sectionHeading": "Connection worthy of those who served.",
+    "cards": [
+      {
+        "title": "Built With Intention",
+        "body": "Every interaction is designed around respect and genuine connection — not engagement metrics. This is a space that honors the people in it."
+      },
+      {
+        "title": "For the Whole Community",
+        "body": "Devotion After Victory welcomes those who have served and those who value that service, creating common ground built on shared respect."
+      }
+    ],
+    "closing": "Devotion After Victory is in beta. Visit the site to explore the platform and join the community."
+  },
+  {
+    "id": "opsconduit",
+    "name": "OpsConduit",
+    "code": "OPS",
+    "category": "Integration Middleware",
+    "status": "Live",
+    "url": "https://opsconduit.vercel.app",
+    "urlLabel": "opsconduit.vercel.app",
+    "ogImage": "/assets/og-image-opsconduit.png",
+    "ogAlt": "OpsConduit — Integration Middleware, a Sovereign Valor Group venture.",
+    "tagline": "A secure integration hub that connects Casebook, monday.com, and Google Workspace — keeping an organization's case records, tasks, files, and calendars automatically in sync.",
+    "metaDescription": "A secure integration hub that connects Casebook, monday.com, and Google Workspace, keeping case records, tasks, files, and calendars automatically in sync. A Sovereign Valor Group venture.",
+    "ogDescription": "A secure integration hub that connects Casebook, monday.com, and Google Workspace — keeping an organization's case records, tasks, files, and calendars automatically in sync.",
+    "atAGlance": [
+      "Casebook · monday.com · Google",
+      "Automatic two-way sync",
+      "Secure by design",
+      "Less manual data entry"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "Built with structure, shipped with discipline.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "A secure integration hub that connects Casebook, monday.com, and Google Workspace, keeping case records, tasks, files, and calendars automatically in sync."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Human-services agencies and operations teams juggling multiple systems who need their records and workflows aligned without manual double-entry."
+      }
+    ],
+    "closing": "OpsConduit is live. Explore the platform, or reach out if your organization needs its systems talking to each other."
+  },
+  {
+    "id": "lottery-pattern-engine",
+    "name": "Lottery Pattern Engine",
+    "code": "LPE",
+    "category": "AI Data Analytics",
+    "status": "Live",
+    "url": "https://lottery-pattern-engine.vercel.app",
+    "urlLabel": "lottery-pattern-engine.vercel.app",
+    "ogImage": "/assets/og-image-lottery-pattern-engine.png",
+    "ogAlt": "Lottery Pattern Engine — AI Data Analytics, a Sovereign Valor Group venture.",
+    "tagline": "An AI-powered lottery pattern analysis engine for Lotto Texas, Powerball, Mega Millions, and Pick 3 — built with Next.js, TypeScript, and Neon Postgres.",
+    "metaDescription": "An AI-powered engine that analyzes historical draw data across Lotto Texas, Powerball, Mega Millions, and Pick 3 to surface patterns and trends. A Sovereign Valor Group venture.",
+    "ogDescription": "An AI-powered lottery pattern analysis engine for Lotto Texas, Powerball, Mega Millions, and Pick 3 — built with Next.js, TypeScript, and Neon Postgres.",
+    "atAGlance": [
+      "Lotto Texas · Powerball",
+      "Mega Millions · Pick 3",
+      "AI pattern analysis",
+      "Next.js · TypeScript · Neon"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "Built with structure, shipped with discipline.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "An AI-powered engine that analyzes historical draw data across Lotto Texas, Powerball, Mega Millions, and Pick 3 to surface patterns and trends."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Data-curious players and analysts who want a rigorous, technology-driven view of lottery draw history rather than guesswork."
+      }
+    ],
+    "closing": "Lottery Pattern Engine is live. Explore the analysis engine, or reach out if you'd like to work together."
+  },
+  {
+    "id": "vocasa",
+    "name": "Vocasa",
+    "code": "VOC",
+    "category": "Voice-Powered Design Tool",
+    "status": "In Development",
+    "url": "https://vocasa-seven.vercel.app",
+    "urlLabel": "vocasa-seven.vercel.app",
+    "ogImage": "/assets/og-image-vocasa.png",
+    "ogAlt": "Vocasa — Voice-Powered Design, a Sovereign Valor Group venture.",
+    "tagline": "A voice-powered app that turns spoken instructions and rough sketches into editable, to-scale home floor plans — describe the space, and Vocasa drafts it.",
+    "metaDescription": "Describe a space out loud or sketch it roughly, and Vocasa drafts an editable, to-scale floor plan — turning natural language and rough ideas into precise layouts. A Sovereign Valor Group venture.",
+    "ogDescription": "A voice-powered app that turns spoken instructions and rough sketches into editable, to-scale home floor plans — describe the space, and Vocasa drafts it.",
+    "atAGlance": [
+      "Voice-first floor planning",
+      "Speech & sketch to layouts",
+      "Editable, to-scale output",
+      "Built under the SVG standard"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "Built with structure, shipped with discipline.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "Describe a space out loud or sketch it roughly, and Vocasa drafts an editable, to-scale floor plan — turning natural language and rough ideas into precise layouts."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Homeowners, renovators, designers, and builders who want to move from idea to accurate floor plan without wrestling with complex CAD software."
+      }
+    ],
+    "closing": "Vocasa is in active development. Preview the current build, or reach out to follow its progress."
+  },
+  {
+    "id": "accountability-workout-app",
+    "name": "Accountability Workout App",
+    "code": "AWA",
+    "category": "Fitness Platform",
+    "status": "In Development",
+    "url": "https://awa.sovereignvalorgroup.com",
+    "urlLabel": "awa.sovereignvalorgroup.com",
+    "ogImage": "/assets/og-image-accountability-workout-app.png",
+    "ogAlt": "Accountability Workout App — Fitness Platform, a Sovereign Valor Group venture.",
+    "tagline": "A fitness accountability platform that connects trainers and clients worldwide through video coaching, daily check-ins, and AI-assisted workout and meal planning.",
+    "metaDescription": "A fitness accountability platform that connects trainers and clients worldwide through video coaching, daily check-ins, and AI-assisted workout and meal planning. A Sovereign Valor Group venture.",
+    "ogDescription": "A fitness accountability platform that connects trainers and clients worldwide through video coaching, daily check-ins, and AI-assisted workout and meal planning.",
+    "atAGlance": [
+      "Trainer–client connection",
+      "Video coaching",
+      "Daily accountability check-ins",
+      "AI workout & meal planning"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "Built with structure, shipped with discipline.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "A fitness accountability platform that connects trainers and clients worldwide through video coaching, daily check-ins, and AI-assisted workout and meal planning."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Coaches scaling their practice and clients who want structure, accountability, and expert guidance — wherever they are in the world."
+      }
+    ],
+    "closing": "The Accountability Workout App is in active development. Preview the current build, or reach out to follow its progress."
+  },
+  {
+    "id": "lumira",
+    "name": "Lumira",
+    "code": "LUM",
+    "category": "Multisensory Learning VR",
+    "status": "In Development",
+    "url": "https://lumira-kohl.vercel.app",
+    "urlLabel": "lumira-kohl.vercel.app",
+    "ogImage": "/assets/og-image-lumira.png",
+    "ogAlt": "Lumira — Multisensory Learning VR, a Sovereign Valor Group venture.",
+    "tagline": "A multisensory VR experience that makes reading and math click for dyslexic learners — through movement, sound, and play.",
+    "metaDescription": "A multisensory VR experience that makes reading and math click for dyslexic learners through movement, sound, and play — turning practice into an experience. A Sovereign Valor Group venture.",
+    "ogDescription": "A multisensory VR experience that makes reading and math click for dyslexic learners — through movement, sound, and play.",
+    "atAGlance": [
+      "Multisensory VR learning",
+      "Reading & math focus",
+      "Designed for dyslexic learners",
+      "Movement, sound, and play"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "Built with structure, shipped with discipline.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "A multisensory VR experience that makes reading and math click for dyslexic learners through movement, sound, and play — turning practice into an experience."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Dyslexic learners, families, and educators looking for an engaging, evidence-informed way to build reading and math confidence."
+      }
+    ],
+    "closing": "Lumira is in active development. Preview the current build, or reach out to follow its progress."
+  },
+  {
+    "id": "family-reunion",
+    "name": "Family Reunion",
+    "productName": "Spades & Bones",
+    "code": "FAM",
+    "category": "Social Multiplayer Gaming",
+    "status": "In Development",
+    "url": null,
+    "urlLabel": null,
+    "ogImage": "/assets/og-image.png",
+    "ogAlt": "Family Reunion: Spades & Bones — Social Multiplayer Gaming, a Sovereign Valor Group venture.",
+    "tagline": "A social multiplayer gaming app built around the family table — Spades first, Dominoes next — with private family rooms, house rules, AI opponents who talk their share of mess, and live video seats around the board.",
+    "metaDescription": "Family Reunion: Spades & Bones is a social multiplayer gaming app built around the family table — Spades first, Dominoes next — with private family rooms, house rules, AI opponents, and live video seats. A Sovereign Valor Group venture.",
+    "ogDescription": "A social multiplayer gaming app built around the family table — Spades first, Dominoes next — with private family rooms, house rules, and AI opponents who talk their share of mess.",
+    "atAGlance": [
+      "Spades now · Dominoes next",
+      "Private family rooms",
+      "Custom house rules",
+      "AI opponents with table talk"
+    ],
+    "sectionEyebrow": "The Product",
+    "sectionHeading": "The reunion table, online.",
+    "cards": [
+      {
+        "title": "What It Does",
+        "body": "A social multiplayer gaming platform that recreates the reunion table online — Spades with real house rules, private family rooms, leaderboards, and AI opponents with personality. Dominoes and live video seats follow."
+      },
+      {
+        "title": "Who It's For",
+        "body": "Families and friend groups separated by distance who still want the cookout table — the competition, the trash talk, and the tradition — without waiting for the next reunion."
+      }
+    ],
+    "roadmap": "Table first. Everything else after.",
+    "closing": "Family Reunion is in active development. Reach out to follow its progress or get early access."
+  }
+]

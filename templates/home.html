@@ -1,0 +1,76 @@
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Veteran-Led &middot; Strategy-Driven &middot; Execution-Focused</p>
+          <h1>Strategy. Technology. <em>Execution.</em></h1>
+          <p class="hero-text">Sovereign Valor Group transforms complex ideas into practical systems, scalable digital products, and mission-driven ventures.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="/services.html" data-event="service_click" data-cta-location="hero">Explore Our Services</a>
+            <a class="button secondary" href="/ventures/" data-event="venture_view" data-cta-location="hero">Explore Our Ventures</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>Core Capabilities</h2>
+          <ul>
+{{#each site.services}}            <li>{{name}}</li>
+{{/each}}          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container band--light">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Why Sovereign Valor Group</p>
+        <h2>Built on the standards we were trained to keep.</h2>
+      </div>
+      <div class="credibility reveal">
+{{#each site.credibility}}        <div>
+          <strong>{{title}}</strong>
+          <span>{{body}}</span>
+        </div>
+{{/each}}      </div>
+    </section>
+
+    <section id="services" class="section container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">What We Do</p>
+        <h2>From vision to execution, with structure and accountability.</h2>
+      </div>
+      <div class="service-grid">
+{{#each site.services}}        <article class="card service-card reveal">
+          <div class="service-icon" aria-hidden="true">{{{iconSvg}}}</div>
+          <h3>{{name}}</h3>
+          <p>{{body}}</p>
+          <a class="button ghost" href="/services.html#{{id}}" data-event="service_click" data-service-name="{{name}}" data-cta-location="home_services">Explore {{name}} &rarr;</a>
+        </article>
+{{/each}}      </div>
+    </section>
+
+    <section id="ventures" class="ventures">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">The Venture Roster</p>
+          <h2>Products built under the SVG standard.</h2>
+          <p>We don't just advise on execution — we practice it. Each venture below was conceived, designed, and built by Sovereign Valor Group.</p>
+        </div>
+
+        <div class="roster">
+{{#each ventures}}{{> venture-row}}{{/each}}        </div>
+        <div class="hero-actions" style="justify-content:center">
+          <a class="button primary" href="/ventures/" data-event="venture_view" data-cta-location="home_roster">Explore Our Ventures &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission-band">
+      <div class="container mission-grid">
+        <blockquote class="reveal">{{site.tagline}}</blockquote>
+        <div class="reveal">
+          <p>Sovereign Valor Group exists for clients who need more than ideas. They need trusted leadership, clean systems, and consistent follow-through — and a partner who has built products of its own and understands what execution actually takes.</p>
+          <div class="mission-actions">
+            <a class="button primary" href="/contact.html" data-event="consultation_click" data-cta-location="home_mission">Schedule a Consultation</a>
+            <a class="button secondary" href="/about.html">About Sovereign Valor Group</a>
+          </div>
+        </div>
+      </div>
+    </section>

@@ -1,0 +1,55 @@
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Venture &middot; {{venture.category}} &middot; {{venture.status}}</p>
+          <h1>{{venture.name}}</h1>
+{{#if venture.productName}}          <p class="hero-text" style="color:var(--gold-hi); font-family:Cinzel,serif; font-size:1.3rem; margin-top:-8px;">{{venture.productName}}</p>
+{{/if}}          <p class="hero-text">{{venture.tagline}}</p>
+          <div class="hero-actions">
+{{#if venture.url}}            <a class="button primary" href="{{venture.url}}" target="_blank" rel="noopener" data-event="venture_click" data-venture-name="{{venture.name}}" data-venture-url="{{venture.url}}" data-cta-location="venture_hero">{{venture.visitLabel}} &#8599;</a>
+{{/if}}            <a class="button secondary" href="/ventures/">Explore Our Ventures</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>At a Glance</h2>
+          <ul>
+{{#each venture.atAGlance}}            <li>{{.}}</li>
+{{/each}}            <li>Status: {{venture.status}}</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">{{venture.sectionEyebrow}}</p>
+        <h2>{{venture.sectionHeading}}</h2>
+      </div>
+      <div class="cards">
+{{#each venture.cards}}        <article class="card reveal">
+          <h3>{{title}}</h3>
+          <p>{{body}}</p>
+        </article>
+{{/each}}        <article class="card reveal">
+          <h3>The SVG Standard</h3>
+          <p>Conceived, designed, and built by Sovereign Valor Group with the same discipline we bring to every mission: honor in planning, valor in execution.</p>
+        </article>
+      </div>
+{{#if venture.roadmap}}      <div class="cta-panel reveal" style="text-align:left">
+        <p class="eyebrow">The Roadmap</p>
+        <h2>{{venture.roadmap}}</h2>
+      </div>
+{{/if}}    </section>
+
+    <section class="mission-band">
+      <div class="container mission-grid">
+        <blockquote class="reveal">{{site.tagline}}</blockquote>
+        <div class="reveal">
+          <p>{{venture.closing}}</p>
+          <div class="mission-actions">
+{{#if venture.url}}            <a class="button primary" href="{{venture.url}}" target="_blank" rel="noopener" data-event="venture_click" data-venture-name="{{venture.name}}" data-venture-url="{{venture.url}}" data-cta-location="venture_footer">{{venture.visitLabel}} &#8599;</a>
+{{/if}}            <a class="button secondary" href="/contact.html" data-event="consultation_click" data-cta-location="venture_footer">Schedule a Consultation</a>
+          </div>
+        </div>
+      </div>
+    </section>

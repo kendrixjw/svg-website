@@ -1,0 +1,94 @@
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">Contact</p>
+        <h1>Let's talk about what you're <em>building.</em></h1>
+        <p>Tell us the objective, the obstacles, and the timeline. We'll come back with what it takes to get there — scope, structure, and a realistic path.</p>
+      </div>
+    </section>
+
+    <section class="section container narrow">
+      <form class="contact-form" id="contact-form" novalidate{{#if site.formEndpoint}} action="{{site.formEndpoint}}" method="POST"{{/if}}>
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Name <span aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="company">Company or Organization</label>
+            <input type="text" id="company" name="company" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="project-type">Project Type</label>
+            <select id="project-type" name="project_type">
+              <option value="">Select one</option>
+{{#each site.services}}              <option value="{{name}}">{{name}}</option>
+{{/each}}              <option value="Something else">Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">Timeline</label>
+            <select id="timeline" name="timeline">
+              <option value="">Select one</option>
+              <option value="Immediate">Immediate</option>
+              <option value="1–3 months">1–3 months</option>
+              <option value="3–6 months">3–6 months</option>
+              <option value="Exploring options">Exploring options</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="budget">Budget Range <span class="optional">(optional)</span></label>
+            <select id="budget" name="budget">
+              <option value="">Prefer not to say</option>
+              <option value="Under $10k">Under $10k</option>
+              <option value="$10k–$50k">$10k–$50k</option>
+              <option value="$50k–$100k">$50k–$100k</option>
+              <option value="$100k+">$100k+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="referral">How did you hear about us?</label>
+            <input type="text" id="referral" name="referral" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Project Description <span aria-hidden="true">*</span></label>
+          <textarea id="description" name="description" rows="6" required></textarea>
+        </div>
+
+        <p class="form-note" id="form-note">
+{{#if site.formEndpoint}}          We'll respond to the email address you provide. Prefer to write directly?
+          Email <a href="mailto:{{site.email}}">{{site.email}}</a>.
+{{/if}}{{#if formFallback}}          This form opens a pre-filled message in your email client. Prefer to write directly?
+          Email <a href="mailto:{{site.email}}">{{site.email}}</a>.
+{{/if}}        </p>
+
+        <button class="button primary" type="submit" data-event="contact_submit" data-cta-location="contact_form">Send Your Project Details</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section container narrow">
+      <div class="cta-panel">
+        <h2>Prefer email?</h2>
+        <p>Reach us directly and we'll respond with next steps.</p>
+        <a class="button primary" href="mailto:{{site.email}}" data-event="consultation_click" data-cta-location="contact_panel">{{site.email}}</a>
+      </div>
+    </section>

@@ -1,0 +1,41 @@
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/logos/svg-logo-mark.png" width="40" height="40" alt="" />
+            <strong>Sovereign Valor Group</strong>
+          </div>
+          <p class="footer-tagline">{{site.tagline}}</p>
+          <p>{{site.blurb}}</p>
+        </div>
+        <div>
+          <h2>Company</h2>
+          <ul>
+{{#each site.nav}}            <li><a href="{{href}}">{{label}}</a></li>
+{{/each}}          </ul>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul>
+{{#each site.services}}            <li><a href="/services.html#{{id}}">{{name}}</a></li>
+{{/each}}          </ul>
+        </div>
+        <div>
+          <h2>Ventures</h2>
+          <ul>
+{{#each ventures}}            <li><a href="/ventures/{{id}}.html">{{name}}</a></li>
+{{/each}}          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {{year}} {{site.legalName}}. All rights reserved.</p>
+        <div class="footer-legal">
+{{#each site.legal}}          <a href="{{href}}">{{label}}</a>
+{{/each}}          <a href="mailto:{{site.email}}">{{site.email}}</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/site.js" defer></script>
