@@ -193,11 +193,54 @@ config, so the policy cannot silently become false when analytics is enabled.
 
 **Image optimization declined by owner** — project stays at zero dependencies.
 
+---
+
+## 2026-08-20 — Integrations activated + duplicate-submission hardening
+
+Commit `db430f3`, deployed and verified live.
+
+**Activated:** `formEndpoint` → `https://formspree.io/f/xzepyqrj`,
+`ga4Id` → `G-XGDL0Z8612`. Both flow through the existing config-driven build —
+no packages installed, no gtag snippet pasted into a template, project still
+zero-dependency. The privacy policy's analytics and cookie disclosures switched
+on automatically alongside the tag.
+
+**Contact form hardening (Formspree path only; mailto fallback unchanged):**
+
+- Honeypot `_gotcha`, offscreen via `position:absolute; left:-9999px` rather
+  than `display:none` (which some bots skip), `tabindex="-1"`, `autocomplete="off"`
+- Submit disables the button and relabels it "Sending…"; **only the failure path
+  restores it**, plus an in-flight re-entrancy guard
+- Success removes the form from the DOM entirely and records a timestamp
+- Submission within 10 minutes renders a cooldown notice instead of the form
+- All `localStorage` access wrapped in try/catch — blocked storage degrades to a
+  plain working form
+- Network errors, non-2xx, and quota exhaustion all surface the direct email fallback
+
+**Verified in-browser (stubbed fetch, so no live messages sent):**
+triple-clicking submit produced **exactly one** POST to Formspree; honeypot sits
+at -9822px, is not `display:none`, and is absent from the tab order; success
+removes the form and writes the timestamp; reload shows the cooldown notice;
+expiring the timestamp restores the form; a 500 response restores the button and
+shows the email fallback; a throwing `localStorage` degrades cleanly.
+
+*Note during verification:* an apparent duplicate POST turned out to be the GA4
+beacon — the counter was counting all `fetch` calls, not just Formspree. Only
+one form submission was ever issued.
+
+**Verified live after deploy:** gtag present on all pages checked; form action
+points at Formspree; honeypot present; privacy disclosure live.
+
+**Vendor guides in the supplied `formspree-GA4.md` were deliberately not
+followed** — no `@formspree/ajax`, no `@formspree/react`, no CDN script, no
+pasted gtag block. Only the two IDs were used. The file was outside the git
+repo (parent directory), so it was never tracked; deleted from disk.
+
 ### Open TODOs
 
 **Outstanding**
 
-- [ ] Paste the Formspree endpoint and GA4 measurement ID into `data/site.json`
+- [ ] Send one real test submission to confirm Formspree delivery, and check GA4 Realtime
 - [ ] Legal pages are **unreviewed drafts** — accurate to current site behavior,
       but should go past someone qualified before being relied on
 - [ ] Real-device mobile check (nav, tap targets, roster layout) — now live, still unverified

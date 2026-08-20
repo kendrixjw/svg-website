@@ -56,8 +56,8 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 
 | Item | Current behavior | To finish |
 |---|---|---|
-| **Contact form — Formspree chosen** | Validates fully, then composes a message into the visitor's mail client. No submission is recorded server-side. | Create a form at formspree.io and paste its endpoint into `formEndpoint` in `data/site.json`, then rebuild. The form switches to background POST with success/failure messaging automatically. |
-| **Analytics — GA4 chosen** | Events attached to every CTA, dispatching to `gtag` if present. No tag is emitted, so **nothing is being collected**. | Paste your `G-XXXXXXX` measurement ID into `ga4Id` in `data/site.json` and rebuild. The tag, and the privacy policy's cookie disclosure, appear together. |
+| **Contact form** | ✅ **Live on Formspree** (`/f/xzepyqrj`). Background POST, honeypot, duplicate-submission hardening, 10-minute cooldown, email fallback on failure. | Nothing — but send yourself one real submission to confirm Formspree delivery and complete its first-submission confirmation if it asks. |
+| **Analytics** | ✅ **Live on GA4** (`G-XGDL0Z8612`) on all 16 pages. CTA events (`venture_click`, `consultation_click`, `service_click`, `venture_view`, `contact_submit`) dispatch to `gtag`. | Confirm events appear in GA4 Realtime, then verify the property in Search Console and submit the sitemap. |
 | **Legal pages** | Drafts written this session. Accurate to how the site actually behaves (no tracking cookies, GitHub Pages, Google Fonts, mailto contact). | Qualified review before relying on them. |
 | **Venture logos** | 3-letter monogram tiles (DAV, OPS, LUM…). | Supply artwork if these should be real logos. |
 | **Family Reunion OG card** | Falls back to the generic SVG share image. | Generate a 1200×630 card to match the other six. |
@@ -68,16 +68,11 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 
 ## Recommended next tasks
 
-### 1. Activate the two integrations (highest value)
-Both are chosen and wired; both need one ID pasted into `data/site.json`,
-then `npm run build:site`, commit, push.
-
-```jsonc
-"formEndpoint": "https://formspree.io/f/YOUR_ID",   // from formspree.io
-"ga4Id": "G-XXXXXXXXXX"                             // from GA4 admin
-```
-
-Until then the site has no way to capture a lead beyond email, and no traffic data.
+### 1. Confirm the integrations end to end
+Both are live and verified in the markup. Still worth doing yourself:
+send one real submission through `/contact.html` and confirm it lands in
+Formspree, and check GA4 Realtime shows traffic. Formspree may require
+confirming the form on its first live submission.
 
 ### 2. Check the live site on a phone
 The mobile nav is verified by source only — never on a real device. It's now
