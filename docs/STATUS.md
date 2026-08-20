@@ -2,15 +2,16 @@
 
 **Last updated:** 2026-08-20
 **Branch:** `main` — rebuild merged and **deployed**
-**Deployed commit:** `1d8c089` "Rebuild site from a central venture registry"
+**Deployed commit:** `11bc0a4` "Fix page content showing through the open mobile menu"
 
 ---
 
 ## TL;DR
 
 **The rebuild is live.** All 16 pages are serving on
-`https://sovereignvalorgroup.com`, verified after deploy. Two integrations
-(contact form, analytics) are wired but dormant, awaiting IDs.
+`https://sovereignvalorgroup.com`, verified after deploy. Formspree and GA4 are
+both **active**. The mobile-menu bleed-through reported on a real device is
+fixed and deployed.
 
 ---
 
@@ -26,11 +27,12 @@ Post-deploy verification (2026-08-20), all returning 200:
 `/accessibility.html` · `/sitemap.xml` · `/robots.txt`
 
 Confirmed live: correct venture statuses (Beta / Live / Live / In Development ×4),
-JSON-LD present, and **no analytics tag emitted** — matching the privacy policy
-as written.
+JSON-LD present, GA4 tag emitted on every page, Formspree action on the contact
+form, and the privacy policy's analytics disclosure showing alongside the tag.
 
-**Fixed by this deploy:** the three incorrect venture statuses, including Lumira
-no longer being advertised as shipped when it isn't.
+**Fixed by these deploys:** the three incorrect venture statuses (including Lumira
+no longer being advertised as shipped when it isn't), and page content showing
+through the open mobile menu over light sections.
 
 ---
 
@@ -44,7 +46,7 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 | Venture registry | ✅ Complete — 7 ventures, single source of truth |
 | Build system | ✅ Complete — zero dependencies, self-validating |
 | Design system | ✅ Complete — tokens, 4 status states, AA contrast fix |
-| Mobile navigation | ✅ Built — ⚠️ verified by source only, not on a device |
+| Mobile navigation | ✅ Working — bleed-through bug found on device and fixed; re-check on a phone to confirm |
 | SEO metadata | ✅ Complete — unique titles/descriptions/canonicals/OG per page |
 | Structured data | ✅ Complete — Organization + ProfessionalService + WebSite + 7 × SoftwareApplication |
 | Internal links | ✅ 646 crawled, 0 broken |
@@ -75,8 +77,8 @@ Formspree, and check GA4 Realtime shows traffic. Formspree may require
 confirming the form on its first live submission.
 
 ### 2. Check the live site on a phone
-The mobile nav is verified by source only — never on a real device. It's now
-live, so this is worth doing soon.
+The mobile menu bleed-through reported on 2026-08-20 is fixed and deployed;
+please re-check on your phone to confirm.
 
 ### 3. Submit to search
 After deploy: verify the property in Google Search Console and submit

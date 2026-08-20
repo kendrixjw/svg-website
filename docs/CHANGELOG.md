@@ -236,11 +236,53 @@ followed** — no `@formspree/ajax`, no `@formspree/react`, no CDN script, no
 pasted gtag block. Only the two IDs were used. The file was outside the git
 repo (parent directory), so it was never tracked; deleted from disk.
 
+---
+
+## 2026-08-20 — Fix: page content showing through the open mobile menu
+
+Commit `11bc0a4`, deployed and verified live. **Reported by the owner on a real
+device** after this session's tooling could not confirm it either way.
+
+**Cause.** The menu panel is a `position: fixed` child of `.site-header`, which
+carries `backdrop-filter: blur(14px)`. That makes the header a containing block
+*and* its own compositing context, so the panel's `rgba(7,21,37,.99)` background
+did not paint solid. Over the dark hero the bleed-through was invisible; over
+light parchment sections, page text read straight through the open menu.
+
+**Fix (three layers, since the exact compositing behavior varies by engine):**
+1. Panel background is now fully opaque — `var(--ink)`, no alpha.
+2. The header drops its `backdrop-filter` while the menu is open, driven by a
+   `data-menu-open` attribute set alongside the existing ARIA state.
+3. `visibility` flips instantly on open and is delayed to the end of the close
+   transition, so the panel is never partially transparent while interactive.
+
+**Verified** at 390px with the light services grid directly behind the menu:
+panel renders solid, hit-testing returns the menu's own elements, close and
+Escape both restore state and release the scroll lock.
+
+### Note on verification tooling
+
+Two harness limitations were identified and worked around, worth knowing for
+future sessions:
+
+- `resize_window` reports success but **does not change the viewport**
+  (`window.innerWidth` stayed 2560 after resizing to 390). Mobile checks made
+  through it are meaningless.
+- `getComputedStyle` readbacks through the harness were **unreliable** — an
+  inline `style.visibility = 'visible'` still read back as `hidden`.
+
+Reliable substitute: load the page in a **same-origin iframe** sized to the
+target width. Its media queries evaluate against the iframe width, and
+screenshots of it are trustworthy. Iframe scrolling is blocked, so to place
+specific content behind a fixed overlay, hide the intervening section rather
+than scrolling to it.
+
 ### Open TODOs
 
 **Outstanding**
 
 - [ ] Send one real test submission to confirm Formspree delivery, and check GA4 Realtime
+- [ ] Re-check the mobile menu on a real device to confirm the fix landed
 - [ ] Legal pages are **unreviewed drafts** — accurate to current site behavior,
       but should go past someone qualified before being relied on
 - [ ] Real-device mobile check (nav, tap targets, roster layout) — now live, still unverified
