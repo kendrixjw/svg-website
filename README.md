@@ -1,31 +1,134 @@
-# Sovereign Valor Group Website (v2)
+# Sovereign Valor Group Website
 
-Static website for sovereignvalorgroup.com — veteran-led consulting and venture firm.
+Static website for **sovereignvalorgroup.com** — a veteran-owned technology,
+consulting, and venture development company.
 
-## What's new in this version
-- **Venture Roster section** on the homepage showcasing SVG-built products:
-  Devotion After Victory, Vocasa, OpsConduit, Accountability
-  Workout App, Lottery Pattern Engine, and Lumira. Edit descriptions/status chips in `index.html`
-  (search for `id="ventures"`).
-- New brand typography: Cinzel (display) + Public Sans (body) via Google Fonts.
-- Uses your actual logo (`assets/logos/svg-logo-mark.png`) with a transparent
-  background — in the nav, footer, favicon, and as a hero watermark.
-- Accessibility: skip link, visible keyboard focus, reduced-motion support.
-- Subtle scroll-reveal animation (pure vanilla JS, no dependencies).
+Generated from a central data registry by a small Node build script. No
+framework, no dependencies, no `node_modules`. The generated HTML is committed
+to the repo and served directly, so the site keeps working with or without Node.
 
-## Files
-- `index.html` — homepage (hero, services, Venture Roster, mission band)
-- `about.html` — About Us page
-- `styles.css` — shared design system
-- `assets/logos/svg-logo-mark.png` — eagle emblem, transparent background
-- `assets/logos/svg-logo-full.png` — full lockup with wordmark
+---
 
-## Editing the Venture Roster
-Each product is an `<article class="venture">` block. To change a status from
-"In Development" to live, change `status-dev` → `status-live` and the label
-text to `Operational`. To link a venture to its own site, wrap the `<h3>` text
-in an `<a href="...">`.
+## Quick start
+
+```bash
+npm run preview      # build into dist/ and serve at http://localhost:8899
+```
+
+That's the whole development loop. Edit data or templates, re-run, refresh.
+
+---
+
+## How it works
+
+```
+data/ventures.json    ← the venture registry (single source of truth)
+data/site.json        ← nav, footer, services, contact, credibility copy
+        ↓
+templates/*.html      ← page templates + partials
+lib/render.mjs        ← tiny template renderer
+        ↓
+build.mjs             ← generates every page
+        ↓
+dist/  (preview)  or  repo root  (production)
+```
+
+One venture's URL, status, or copy lives in **exactly one place**. Changing it
+updates the homepage roster, the ventures index, that venture's detail page,
+the footer links, `sitemap.xml`, and the JSON-LD structured data at once.
+
+---
+
+## Common tasks
+
+### Change a venture's URL, status, or description
+
+Edit `data/ventures.json`, then rebuild. Nothing else to touch.
+
+Valid statuses: `Live`, `Beta`, `In Development`, `Coming Soon`.
+The build **fails** on any other value, or on a venture URL that isn't `https://`.
+
+### Add a new venture
+
+Add an object to `data/ventures.json`. It needs at minimum `id`, `name`, `code`
+(the 3-letter monogram tile), `category`, `status`, `tagline`, `metaDescription`,
+`ogDescription`, `ogImage`, `ogAlt`, `atAGlance`, `cards`, and `closing`.
+Use `"url": null` if it isn't published yet — the outbound link is simply omitted.
+Copy an existing entry as a starting point.
+
+A detail page, roster rows, footer link, sitemap entry, and `SoftwareApplication`
+schema node are all generated automatically.
+
+### Change navigation, footer, or service copy
+
+Edit `data/site.json`.
+
+### Change the design
+
+Edit `src/styles.css`. Design tokens (color, spacing, type scale, status colors)
+are the `:root` block at the top.
+
+### Change page structure
+
+Edit the relevant file in `templates/`. Shared chrome lives in
+`templates/partials/` — edit the header or footer once, every page updates.
+
+---
+
+## Scripts
+
+| Command | Does |
+|---|---|
+| `npm run build` | Build into `dist/` — safe, gitignored, doesn't touch live files |
+| `npm run preview` | Build, then serve `dist/` at `localhost:8899` |
+| `npm run build:site` | **Build over the live files at the repo root.** Deploy step. |
+
+---
 
 ## Deployment
-Upload all files (keeping the folder structure) to Vercel, Netlify, Namecheap
-hosting, or any static host.
+
+The site is hosted on **GitHub Pages**, published from the `main` branch, with
+the custom domain set by the `CNAME` file.
+
+```bash
+npm run build:site
+git add -A
+git commit -m "Rebuild site"
+git push          # GitHub Pages publishes automatically
+```
+
+Deploying is just committing regenerated HTML — there is no CI step and no build
+runs on the server.
+
+---
+
+## Project layout
+
+| Path | What |
+|---|---|
+| `data/` | Content registry — the files you'll edit most |
+| `templates/` | Page templates and shared partials |
+| `lib/` | Template renderer and inline service icons |
+| `src/` | `styles.css` and `site.js` (copied into the build) |
+| `build.mjs` | The build |
+| `serve.mjs` | Local preview server (development only — never shipped) |
+| `assets/` | Logos, favicons, Open Graph share images |
+| `docs/` | `CHANGELOG.md` and `STATUS.md` — current state and open work |
+| `dist/` | Build output. Gitignored. |
+
+Generated HTML (`index.html`, `about.html`, `ventures/*.html`, …) sits at the
+repo root, because that's what GitHub Pages serves. **Don't hand-edit those** —
+they're overwritten on the next build. Edit `data/` or `templates/` instead.
+
+---
+
+## Front-end details
+
+- **Type:** Cinzel (display) + Public Sans (body), via Google Fonts
+- **Brand:** deep navy, metallic gold, parchment; eagle-and-crown emblem
+- **Accessibility:** skip link, visible focus, reduced-motion support, labeled
+  form fields, WCAG 2.2 AA contrast targets
+- **JavaScript:** one file, vanilla, no dependencies — mobile menu, scroll
+  reveal, contact form, analytics event dispatch
+
+See `docs/STATUS.md` for what's currently stubbed and what's next.

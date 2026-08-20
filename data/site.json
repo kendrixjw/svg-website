@@ -1,0 +1,118 @@
+{
+  "name": "Sovereign Valor Group",
+  "legalName": "Sovereign Valor Group LLC",
+  "abbreviation": "SVG",
+  "origin": "https://sovereignvalorgroup.com",
+  "tagline": "Honor in planning. Valor in execution.",
+  "blurb": "Veteran-led strategy, technology, and venture development.",
+  "email": "support@sovereignvalorgroup.com",
+  "_integrations": "Paste the IDs below to activate. While null, the contact form falls back to composing an email in the visitor's mail client, and no analytics tag is emitted.",
+  "formEndpoint": null,
+  "ga4Id": null,
+  "nav": [
+    {
+      "label": "Home",
+      "href": "/"
+    },
+    {
+      "label": "Services",
+      "href": "/services.html"
+    },
+    {
+      "label": "Ventures",
+      "href": "/ventures/"
+    },
+    {
+      "label": "About",
+      "href": "/about.html"
+    },
+    {
+      "label": "Contact",
+      "href": "/contact.html"
+    }
+  ],
+  "legal": [
+    {
+      "label": "Privacy Policy",
+      "href": "/privacy.html"
+    },
+    {
+      "label": "Terms of Use",
+      "href": "/terms.html"
+    },
+    {
+      "label": "Accessibility",
+      "href": "/accessibility.html"
+    }
+  ],
+  "services": [
+    {
+      "id": "strategic-planning",
+      "name": "Strategic Planning",
+      "short": "Move from ideas to executable plans.",
+      "body": "We define the mission, prioritize the work, and create a clear execution path with milestones, risks, and measurable outcomes.",
+      "icon": "compass"
+    },
+    {
+      "id": "program-management",
+      "name": "Project & Program Management",
+      "short": "Structure, accountability, and execution frameworks.",
+      "body": "We bring disciplined project and program management to complex initiatives — schedules, governance, and reporting that keep teams aligned and accountable.",
+      "icon": "chart"
+    },
+    {
+      "id": "systems-integration",
+      "name": "Systems Integration & Automation",
+      "short": "Connect your tools and cut the manual work.",
+      "body": "We connect tools, workflows, APIs, and business systems so information moves on its own — reducing double-entry and the errors that come with it.",
+      "icon": "nodes"
+    },
+    {
+      "id": "technical-documentation",
+      "name": "Technical Documentation",
+      "short": "Documentation people actually use.",
+      "body": "We create clear technical, operational, training, process, and compliance documentation that captures how the work is really done.",
+      "icon": "document"
+    },
+    {
+      "id": "product-development",
+      "name": "Product Design & Development",
+      "short": "Turn business concepts into working products.",
+      "body": "We turn business concepts into digital products, applications, workflows, and user experiences — designed, built, and shipped.",
+      "icon": "layers"
+    },
+    {
+      "id": "veteran-venture-support",
+      "name": "Veteran-Owned Venture Support",
+      "short": "Support built for veteran entrepreneurs.",
+      "body": "We help veteran entrepreneurs structure, build, modernize, and scale technology-driven businesses — from first plan to running system.",
+      "icon": "shield"
+    }
+  ],
+  "credibility": [
+    {
+      "title": "Veteran Owned",
+      "body": "Built and led by a veteran, with the standards that come with it."
+    },
+    {
+      "title": "Engineering Led",
+      "body": "Technical decisions made by people who build, not just advise."
+    },
+    {
+      "title": "Program Management Expertise",
+      "body": "Structure, governance, and accountability applied to complex work."
+    },
+    {
+      "title": "Systems Thinking",
+      "body": "We solve for the whole operation, not one isolated symptom."
+    },
+    {
+      "title": "Technology Integration",
+      "body": "Existing tools connected and automated instead of replaced wholesale."
+    },
+    {
+      "title": "Product Development",
+      "body": "A working venture portfolio — proof of the same discipline we sell."
+    }
+  ]
+}

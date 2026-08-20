@@ -1,0 +1,17 @@
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="/">
+        <img src="/assets/logos/svg-logo-mark.png" width="50" height="50" alt="" />
+        <span>Sovereign Valor Group</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+{{#each site.nav}}        <a href="{{href}}"{{#if current}} aria-current="page"{{/if}}>{{label}}</a>
+{{/each}}        <a class="nav-cta" href="/contact.html" data-event="consultation_click" data-cta-location="header">Schedule a Consultation</a>
+      </div>
+    </nav>
+  </header>

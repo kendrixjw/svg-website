@@ -1,0 +1,16 @@
+          <article class="venture reveal">
+            <div class="venture-code" aria-hidden="true">{{code}}</div>
+            <div class="venture-name">
+              <h3>
+                <a href="/ventures/{{id}}.html">{{name}}</a>
+{{#if productName}}                <span class="venture-sub">{{productName}}</span>
+{{/if}}              </h3>
+              <span class="venture-tag">{{category}}</span>
+            </div>
+            <p class="venture-desc">{{tagline}}</p>
+            <div class="venture-actions">
+              <span class="status {{statusClass}}">{{status}}</span>
+              <a class="button ghost" href="/ventures/{{id}}.html" data-event="venture_view" data-venture-name="{{name}}" data-cta-location="{{ctaLocation}}">View {{name}} &rarr;</a>
+{{#if url}}              <a class="button ghost" href="{{url}}" target="_blank" rel="noopener" data-event="venture_click" data-venture-name="{{name}}" data-venture-url="{{url}}" data-cta-location="{{ctaLocation}}">{{visitLabel}} &#8599;</a>
+{{/if}}            </div>
+          </article>

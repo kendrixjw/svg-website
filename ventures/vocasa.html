@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vocasa | Sovereign Valor Group</title>
+  <title>Vocasa | A Sovereign Valor Group Venture</title>
   <meta name="description" content="Describe a space out loud or sketch it roughly, and Vocasa drafts an editable, to-scale floor plan — turning natural language and rough ideas into precise layouts. A Sovereign Valor Group venture." />
   <link rel="canonical" href="https://sovereignvalorgroup.com/ventures/vocasa.html" />
 
@@ -32,8 +32,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
+
+
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -41,29 +43,34 @@
   <header class="site-header">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="/">
-        <img src="/assets/logos/svg-logo-mark.png" alt="Sovereign Valor Group eagle-and-crown emblem" />
+        <img src="/assets/logos/svg-logo-mark.png" width="50" height="50" alt="" />
         <span>Sovereign Valor Group</span>
       </a>
-      <div class="nav-links">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
+      <div class="nav-links" id="nav-links">
         <a href="/">Home</a>
-        <a href="/about.html">About Us</a>
-        <a href="/#services">Services</a>
-        <a href="/ventures/" aria-current="page">Ventures</a>
-        <a class="nav-cta" href="mailto:support@sovereignvalorgroup.com">Start a Conversation</a>
+        <a href="/services.html">Services</a>
+        <a href="/ventures/">Ventures</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a class="nav-cta" href="/contact.html" data-event="consultation_click" data-cta-location="header">Schedule a Consultation</a>
       </div>
     </nav>
   </header>
+
 
   <main id="main">
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Venture &middot; Voice-Powered Design &middot; In Development</p>
+          <p class="eyebrow">Venture &middot; Voice-Powered Design Tool &middot; In Development</p>
           <h1>Vocasa</h1>
           <p class="hero-text">A voice-powered app that turns spoken instructions and rough sketches into editable, to-scale home floor plans — describe the space, and Vocasa drafts it.</p>
           <div class="hero-actions">
-            <a class="button primary" href="mailto:support@sovereignvalorgroup.com?subject=Vocasa">Start a Conversation</a>
-            <a class="button secondary" href="/ventures/">Back to Ventures</a>
+            <a class="button primary" href="https://vocasa-seven.vercel.app" target="_blank" rel="noopener" data-event="venture_click" data-venture-name="Vocasa" data-venture-url="https://vocasa-seven.vercel.app" data-cta-location="venture_hero">Preview the build &#8599;</a>
+            <a class="button secondary" href="/ventures/">Explore Our Ventures</a>
           </div>
         </div>
         <aside class="hero-card">
@@ -90,7 +97,7 @@
           <p>Describe a space out loud or sketch it roughly, and Vocasa drafts an editable, to-scale floor plan — turning natural language and rough ideas into precise layouts.</p>
         </article>
         <article class="card reveal">
-          <h3>Who It’s For</h3>
+          <h3>Who It&#39;s For</h3>
           <p>Homeowners, renovators, designers, and builders who want to move from idea to accurate floor plan without wrestling with complex CAD software.</p>
         </article>
         <article class="card reveal">
@@ -104,35 +111,75 @@
       <div class="container mission-grid">
         <blockquote class="reveal">Honor in planning. Valor in execution.</blockquote>
         <div class="reveal">
-          <p>Vocasa is currently in development. If you’d like to follow its progress or explore working together, reach out and we’ll keep you posted.</p>
-          <a class="button primary" href="mailto:support@sovereignvalorgroup.com?subject=Vocasa">Start a Conversation</a>
+          <p>Vocasa is in active development. Preview the current build, or reach out to follow its progress.</p>
+          <div class="mission-actions">
+            <a class="button primary" href="https://vocasa-seven.vercel.app" target="_blank" rel="noopener" data-event="venture_click" data-venture-name="Vocasa" data-venture-url="https://vocasa-seven.vercel.app" data-cta-location="venture_footer">Preview the build &#8599;</a>
+            <a class="button secondary" href="/contact.html" data-event="consultation_click" data-cta-location="venture_footer">Schedule a Consultation</a>
+          </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <div class="container footer-grid">
-      <div>
-        <div class="footer-brand">
-          <img src="/assets/logos/svg-logo-mark.png" alt="" />
-          <strong>Sovereign Valor Group</strong>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="/assets/logos/svg-logo-mark.png" width="40" height="40" alt="" />
+            <strong>Sovereign Valor Group</strong>
+          </div>
+          <p class="footer-tagline">Honor in planning. Valor in execution.</p>
+          <p>Veteran-led strategy, technology, and venture development.</p>
         </div>
-        <p class="footer-tagline">Honor in planning. Valor in execution.</p>
-        <p>Veteran-led strategy, technology, and venture development.</p>
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/services.html">Services</a></li>
+            <li><a href="/ventures/">Ventures</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/services.html#strategic-planning">Strategic Planning</a></li>
+            <li><a href="/services.html#program-management">Project &amp; Program Management</a></li>
+            <li><a href="/services.html#systems-integration">Systems Integration &amp; Automation</a></li>
+            <li><a href="/services.html#technical-documentation">Technical Documentation</a></li>
+            <li><a href="/services.html#product-development">Product Design &amp; Development</a></li>
+            <li><a href="/services.html#veteran-venture-support">Veteran-Owned Venture Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ventures</h2>
+          <ul>
+            <li><a href="/ventures/devotion-after-victory.html">Devotion After Victory</a></li>
+            <li><a href="/ventures/opsconduit.html">OpsConduit</a></li>
+            <li><a href="/ventures/lottery-pattern-engine.html">Lottery Pattern Engine</a></li>
+            <li><a href="/ventures/vocasa.html">Vocasa</a></li>
+            <li><a href="/ventures/accountability-workout-app.html">Accountability Workout App</a></li>
+            <li><a href="/ventures/lumira.html">Lumira</a></li>
+            <li><a href="/ventures/family-reunion.html">Family Reunion</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <p>sovereignvalorgroup.com</p>
-        <p><a href="mailto:support@sovereignvalorgroup.com">support@sovereignvalorgroup.com</a></p>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sovereign Valor Group LLC. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Use</a>
+          <a href="/accessibility.html">Accessibility</a>
+          <a href="mailto:support@sovereignvalorgroup.com">support@sovereignvalorgroup.com</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  </script>
+  <script src="/site.js" defer></script>
+
 </body>
 </html>
