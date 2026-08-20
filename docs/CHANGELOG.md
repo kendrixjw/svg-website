@@ -176,19 +176,32 @@ non-HTTPS venture URL, so a bad edit fails the build instead of shipping.
 
 ---
 
+### Deployed — 2026-08-20
+
+Owner approved deployment. `npm run build:site` → commit `1d8c089` → merged to
+`main` → pushed. GitHub Pages published within a minute.
+
+Post-deploy verification against the live domain: all 16 pages plus
+`sitemap.xml` and `robots.txt` return 200; venture statuses render correctly;
+JSON-LD present; no analytics tag emitted (matching the privacy policy).
+
+**Integrations chosen by owner and scaffolded, awaiting IDs:**
+Formspree for the contact form, Google Analytics 4 for analytics. Both are
+driven by `formEndpoint` / `ga4Id` in `data/site.json` and are inert while null.
+The privacy policy's cookie and third-party sections are generated from the same
+config, so the policy cannot silently become false when analytics is enabled.
+
+**Image optimization declined by owner** — project stays at zero dependencies.
+
 ### Open TODOs
 
-**Blocking a production deploy**
+**Outstanding**
 
-- [ ] Owner review of the generated site at `http://localhost:8899/`
+- [ ] Paste the Formspree endpoint and GA4 measurement ID into `data/site.json`
 - [ ] Legal pages are **unreviewed drafts** — accurate to current site behavior,
       but should go past someone qualified before being relied on
-- [ ] Real-device mobile check (nav, tap targets, roster layout)
-
-**Needs an owner decision**
-
-- [ ] Contact form service (Formspree / Netlify Forms / Basin / scheduler link)
-- [ ] Analytics platform (GA4 / Vercel Analytics / Plausible) + Search Console verification
+- [ ] Real-device mobile check (nav, tap targets, roster layout) — now live, still unverified
+- [ ] Google Search Console verification + sitemap submission
 - [ ] Confirm venture name: "Family Reunion" vs "Spades & Bones"
 - [ ] Custom subdomains for the four raw `*.vercel.app` ventures — AWA already
       proves the pattern (`awa.sovereignvalorgroup.com`); DNS + Vercel only, no code

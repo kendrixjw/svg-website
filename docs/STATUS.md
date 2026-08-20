@@ -1,16 +1,16 @@
 # Project Status
 
 **Last updated:** 2026-08-20
-**Branch:** `redesign-phase3` (not merged)
-**Production branch:** `main` — **unchanged this session**
+**Branch:** `main` — rebuild merged and **deployed**
+**Deployed commit:** `1d8c089` "Rebuild site from a central venture registry"
 
 ---
 
 ## TL;DR
 
-The rebuilt site is complete and verified in preview, but **nothing has shipped**.
-Production still serves the old nine hand-written HTML files. Deploying is a
-three-command step once the work is approved.
+**The rebuild is live.** All 16 pages are serving on
+`https://sovereignvalorgroup.com`, verified after deploy. Two integrations
+(contact form, analytics) are wired but dormant, awaiting IDs.
 
 ---
 
@@ -19,24 +19,22 @@ three-command step once the work is approved.
 **`https://sovereignvalorgroup.com`** — GitHub Pages, from `main`, via the
 `CNAME` file. Repo: `github.com/kendrixjw/svg-website`.
 
-The live site is the **pre-rebuild version**: 9 hand-written HTML files with
-duplicated navigation, footer, and venture data. It carries three known defects
-that the rebuild fixes but which are **still live today**:
+Post-deploy verification (2026-08-20), all returning 200:
 
-| Live defect | Impact |
-|---|---|
-| Devotion After Victory labeled "In Development" | It's in Beta |
-| OpsConduit labeled "In Development" | It's Live |
-| Lumira labeled "Live" | It's In Development — **currently advertising a product as shipped when it isn't** |
+`/` · `/services.html` · `/contact.html` · `/about.html` · `/ventures/` ·
+7 × `/ventures/<id>.html` · `/privacy.html` · `/terms.html` ·
+`/accessibility.html` · `/sitemap.xml` · `/robots.txt`
 
-Also still live: no `robots.txt`, no `sitemap.xml`, no structured data, no
-analytics, no mobile menu (nav links wrap), no `/services` or `/contact` page.
+Confirmed live: correct venture statuses (Beta / Live / Live / In Development ×4),
+JSON-LD present, and **no analytics tag emitted** — matching the privacy policy
+as written.
+
+**Fixed by this deploy:** the three incorrect venture statuses, including Lumira
+no longer being advertised as shipped when it isn't.
 
 ---
 
-## What is built but not deployed
-
-On branch `redesign-phase3`, generated into `dist/` (gitignored):
+## What is built and deployed
 
 **16 pages** — home, services, ventures index, 7 venture detail pages, about,
 contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.txt`.
@@ -58,8 +56,8 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 
 | Item | Current behavior | To finish |
 |---|---|---|
-| **Contact form** | Validates fully, then composes a message into the visitor's mail client. Functional, but no submission is recorded server-side. | Pick a form service; set `action` on the `<form>` and the mailto handler stands down automatically. |
-| **Analytics** | Events are attached to every CTA and dispatch to `gtag`/`va` if present. With no provider installed it **silently no-ops** — no data is being collected. | Install one provider and add its tag; the events start flowing with no markup changes. |
+| **Contact form — Formspree chosen** | Validates fully, then composes a message into the visitor's mail client. No submission is recorded server-side. | Create a form at formspree.io and paste its endpoint into `formEndpoint` in `data/site.json`, then rebuild. The form switches to background POST with success/failure messaging automatically. |
+| **Analytics — GA4 chosen** | Events attached to every CTA, dispatching to `gtag` if present. No tag is emitted, so **nothing is being collected**. | Paste your `G-XXXXXXX` measurement ID into `ga4Id` in `data/site.json` and rebuild. The tag, and the privacy policy's cookie disclosure, appear together. |
 | **Legal pages** | Drafts written this session. Accurate to how the site actually behaves (no tracking cookies, GitHub Pages, Google Fonts, mailto contact). | Qualified review before relying on them. |
 | **Venture logos** | 3-letter monogram tiles (DAV, OPS, LUM…). | Supply artwork if these should be real logos. |
 | **Family Reunion OG card** | Falls back to the generic SVG share image. | Generate a 1200×630 card to match the other six. |
@@ -70,23 +68,20 @@ contact, 404, privacy, terms, accessibility — plus `sitemap.xml` and `robots.t
 
 ## Recommended next tasks
 
-### 1. Review and ship the rebuild (highest value)
-Run `npm run preview`, click through at `http://localhost:8899/`, and check the
-site on a phone — that's the one thing not verified. Then:
+### 1. Activate the two integrations (highest value)
+Both are chosen and wired; both need one ID pasted into `data/site.json`,
+then `npm run build:site`, commit, push.
 
-```bash
-npm run build:site     # generate over the live files at the repo root
-git add -A && git commit -m "Rebuild site from central venture registry"
-git checkout main && git merge redesign-phase3
-git push               # GitHub Pages publishes from main
+```jsonc
+"formEndpoint": "https://formspree.io/f/YOUR_ID",   // from formspree.io
+"ga4Id": "G-XXXXXXXXXX"                             // from GA4 admin
 ```
 
-Shipping this also corrects the three wrong venture statuses currently live —
-including Lumira being advertised as shipped when it isn't.
+Until then the site has no way to capture a lead beyond email, and no traffic data.
 
-### 2. Decide the two integrations
-Contact form service and analytics platform. Both are one-line changes once
-chosen; both are currently the site's only real conversion gaps.
+### 2. Check the live site on a phone
+The mobile nav is verified by source only — never on a real device. It's now
+live, so this is worth doing soon.
 
 ### 3. Submit to search
 After deploy: verify the property in Google Search Console and submit
