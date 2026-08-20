@@ -471,6 +471,16 @@ p { max-width: var(--measure); }
 .form-note a { color: var(--gold-ink); font-weight: 700; }
 .contact-form .button.primary { justify-self: start; }
 .form-status { font-weight: 700; color: var(--gold-ink); margin: 0; }
+.form-replacement {
+  background: var(--white);
+  border-left: 5px solid var(--gold);
+  border-radius: 14px;
+  padding: var(--s4);
+  box-shadow: 0 10px 26px rgba(16,42,67,.07);
+  max-width: 780px;
+}
+.form-replacement p { margin: 0; font-size: 1.08rem; font-weight: 600; color: var(--ink); }
+.form-replacement a { color: var(--gold-ink); font-weight: 700; }
 
 /* ---------- Footer ---------- */
 .footer { background: #040b13; color: var(--steel); padding: var(--s6) 0 var(--s5); }

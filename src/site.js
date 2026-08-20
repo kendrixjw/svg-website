@@ -88,8 +88,65 @@
       if (msg) msg.remove();
     };
 
+    /* --- Duplicate-submission guards (Formspree path only) --- */
+    var COOLDOWN_KEY = "svg_contact_last_submit";
+    var COOLDOWN_MS = 10 * 60 * 1000;
+    var EMAIL = "support@sovereignvalorgroup.com";
+    var submitting = false;
+
+    // Storage can be unavailable (private browsing, blocked cookies, full quota).
+    // Every access is guarded so the form still works when it throws.
+    var readLastSubmit = function () {
+      try {
+        var raw = window.localStorage.getItem(COOLDOWN_KEY);
+        var when = raw ? parseInt(raw, 10) : 0;
+        return isNaN(when) ? 0 : when;
+      } catch (err) {
+        return 0;
+      }
+    };
+
+    var writeLastSubmit = function () {
+      try {
+        window.localStorage.setItem(COOLDOWN_KEY, String(Date.now()));
+      } catch (err) {
+        /* Cooldown is a convenience, not a correctness guarantee — carry on. */
+      }
+    };
+
+    // Swap the form out for a message. Built as DOM nodes rather than innerHTML.
+    var replaceForm = function (lead, trailing) {
+      if (!form.parentNode) return;
+      var panel = document.createElement("div");
+      panel.className = "form-replacement";
+      panel.setAttribute("role", "status");
+
+      var p = document.createElement("p");
+      p.appendChild(document.createTextNode(lead));
+      if (trailing) {
+        p.appendChild(document.createTextNode(trailing));
+        var link = document.createElement("a");
+        link.href = "mailto:" + EMAIL;
+        link.textContent = EMAIL;
+        p.appendChild(link);
+        p.appendChild(document.createTextNode("."));
+      }
+      panel.appendChild(p);
+      form.parentNode.replaceChild(panel, form);
+      return panel;
+    };
+
+    // Someone who just submitted shouldn't be handed an empty form to fill again.
+    if (endpoint) {
+      var last = readLastSubmit();
+      if (last && Date.now() - last < COOLDOWN_MS) {
+        replaceForm("We've received your message. ", "Need to add something? Email ");
+      }
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (submitting) return; // second click while a POST is already in flight
 
       var required = [
         { el: form.elements.name, label: "your name" },
@@ -122,8 +179,12 @@
       // email rather than pretending it went through.
       if (endpoint) {
         var submitButton = form.querySelector('button[type="submit"]');
-        var replyTo = get("email"); // captured before reset() clears the field
+        var buttonLabel = submitButton.textContent;
+        var replyTo = get("email"); // captured before the form leaves the DOM
+
+        submitting = true;
         submitButton.disabled = true;
+        submitButton.textContent = "Sending…";
         status.textContent = "Sending…";
 
         fetch(endpoint, {
@@ -132,17 +193,23 @@
           headers: { Accept: "application/json" },
         })
           .then(function (res) {
+            // Covers network-level failures, non-2xx, and Formspree quota errors.
             if (!res.ok) throw new Error("Request failed with status " + res.status);
-            form.reset();
-            status.textContent =
-              "Thank you — your project details are on their way. We'll respond to " + replyTo + ".";
+
+            // Success: the form goes away entirely, so there is nothing left to
+            // resubmit. Deliberately not re-enabling the button here.
+            writeLastSubmit();
+            replaceForm(
+              "Thank you — your project details are on their way. We'll respond to " + replyTo + ".",
+              ""
+            );
           })
           .catch(function () {
-            status.textContent =
-              "Something went wrong sending that. Please email support@sovereignvalorgroup.com directly and we'll pick it up from there.";
-          })
-          .finally(function () {
+            // Failure is the only path that gives the button back.
+            submitting = false;
             submitButton.disabled = false;
+            submitButton.textContent = buttonLabel;
+            status.textContent = "Something went wrong — reach us directly at " + EMAIL + ".";
           });
         return;
       }
