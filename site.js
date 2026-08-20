@@ -9,10 +9,14 @@
   var links = document.getElementById("nav-links");
 
   if (toggle && links) {
+    var header = toggle.closest(".site-header");
+
     var setOpen = function (open) {
       toggle.setAttribute("aria-expanded", String(open));
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
       links.setAttribute("data-open", String(open));
+      // Lets the header drop its backdrop-filter while open — see styles.css.
+      if (header) header.setAttribute("data-menu-open", String(open));
       document.body.style.overflow = open && window.matchMedia("(max-width: 768px)").matches ? "hidden" : "";
     };
 

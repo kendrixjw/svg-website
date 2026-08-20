@@ -541,20 +541,39 @@ p { max-width: var(--measure); }
 @media (max-width: 768px) {
   .nav { min-height: 72px; }
   .nav-toggle { display: inline-flex; }
+  /* While the menu is open the header drops its blur and goes fully opaque.
+     backdrop-filter turns the header into a compositing context for the fixed
+     panel inside it, which is what let page content show through. */
+  .site-header[data-menu-open="true"] {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: var(--ink);
+  }
   .nav-links {
     position: fixed; inset: 72px 0 auto 0;
     flex-direction: column; align-items: stretch;
     gap: 0;
-    background: rgba(7, 21, 37, .99);
+    /* Fully opaque, no alpha. The panel sits inside .site-header, which has a
+       backdrop-filter — that makes the header a containing block and its own
+       compositing context, and a translucent panel background let page content
+       read through the open menu over light sections. */
+    background: var(--ink);
     border-bottom: 1px solid var(--line-gold);
     padding: var(--s2) 22px var(--s4);
     max-height: calc(100dvh - 72px);
     overflow-y: auto;
     transform: translateY(-8px);
     opacity: 0; visibility: hidden;
-    transition: opacity .18s ease, transform .18s ease, visibility .18s;
+    /* Visibility flips instantly on open and is delayed to the end on close,
+       so the panel is never left partially transparent while interactive. */
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
   }
-  .nav-links[data-open="true"] { opacity: 1; visibility: visible; transform: none; }
+  .nav-links[data-open="true"] {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: opacity .18s ease, transform .18s ease, visibility 0s;
+  }
   .nav-links a {
     min-height: 52px; font-size: 1.05rem;
     border-bottom: 1px solid var(--line-dark);
