@@ -73,6 +73,14 @@
           <textarea id="description" name="description" rows="6" required></textarea>
         </div>
 
+        <!-- Honeypot. Positioned offscreen rather than display:none, which some
+             bots skip. Unreachable by keyboard and excluded from autofill;
+             Formspree discards any submission where this arrives filled. -->
+        <div style="position:absolute; left:-9999px;" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+
         <p class="form-note" id="form-note">
 {{#if site.formEndpoint}}          We'll respond to the email address you provide. Prefer to write directly?
           Email <a href="mailto:{{site.email}}">{{site.email}}</a>.

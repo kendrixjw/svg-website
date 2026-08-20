@@ -7,8 +7,8 @@
   "blurb": "Veteran-led strategy, technology, and venture development.",
   "email": "support@sovereignvalorgroup.com",
   "_integrations": "Paste the IDs below to activate. While null, the contact form falls back to composing an email in the visitor's mail client, and no analytics tag is emitted.",
-  "formEndpoint": null,
-  "ga4Id": null,
+  "formEndpoint": "https://formspree.io/f/xzepyqrj",
+  "ga4Id": "G-XGDL0Z8612",
   "nav": [
     {
       "label": "Home",

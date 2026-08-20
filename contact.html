@@ -35,6 +35,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
 
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XGDL0Z8612"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XGDL0Z8612');
+  </script>
+
 
 </head>
 <body>
@@ -71,7 +80,7 @@
     </section>
 
     <section class="section container narrow">
-      <form class="contact-form" id="contact-form" novalidate>
+      <form class="contact-form" id="contact-form" novalidate action="https://formspree.io/f/xzepyqrj" method="POST">
         <div class="field-row">
           <div class="field">
             <label for="name">Name <span aria-hidden="true">*</span></label>
@@ -142,8 +151,16 @@
           <textarea id="description" name="description" rows="6" required></textarea>
         </div>
 
+        <!-- Honeypot. Positioned offscreen rather than display:none, which some
+             bots skip. Unreachable by keyboard and excluded from autofill;
+             Formspree discards any submission where this arrives filled. -->
+        <div style="position:absolute; left:-9999px;" aria-hidden="true">
+          <label for="_gotcha">Leave this field empty</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off" />
+        </div>
+
         <p class="form-note" id="form-note">
-          This form opens a pre-filled message in your email client. Prefer to write directly?
+          We'll respond to the email address you provide. Prefer to write directly?
           Email <a href="mailto:support@sovereignvalorgroup.com">support@sovereignvalorgroup.com</a>.
         </p>
 
