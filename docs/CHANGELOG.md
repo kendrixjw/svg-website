@@ -368,3 +368,45 @@ card and links must not switch until the subdomain resolves.
 Note: the existing `awa` record points at a deployment-specific hostname
 (`awa-a3p7741wg-kendrixjw-projects.vercel.app`) rather than `cname.vercel-dns.com`.
 That is fragile across redeploys and worth changing.
+
+---
+
+## 2026-08-22 — fam.sovereignvalorgroup.com live
+
+Commit `542911d`, deployed and verified.
+
+The subdomain resolves, serves the app, and holds a valid Let's Encrypt
+certificate (`CN=fam.sovereignvalorgroup.com`, issued 2026-08-22, expires
+2026-11-20). `vercel domains verify` reports `ok: true, misconfigured: false`.
+
+**Host chosen: `fam`, not `family-reunion`.** The owner entered `fam` in the DNS
+row, so Vercel was re-pointed to match rather than insisting on the longer name.
+It also matches the venture's `FAM` monogram and the existing `awa` convention.
+
+Registry updated to `https://fam.sovereignvalorgroup.com`; share card regenerated
+to print the short URL (and re-encoded at 307 KB, down from 641 KB).
+
+**Family Reunion is the second venture on a first-party subdomain.** Five remain
+on raw `*.vercel.app` hostnames.
+
+### Diagnosis notes, for the next DNS change
+
+The record took several attempts. What the failures looked like:
+
+- **A frozen SOA serial is the tell.** Namecheap bumps it on every zone save.
+  While it sat unchanged at `1787406962`, nothing had been committed, no matter
+  what the table appeared to show. The row needs its green ✓ clicked.
+- **Two rows were entered inverted** — the desired hostname in the Value field
+  and a short label in Host. Host is the name being created; Value is the target.
+- **Namecheap's anycast nodes disagree.** Once saved, `dns1.registrar-servers.com`
+  still returned NXDOMAIN while `8.8.8.8` and `1.1.1.1` resolved correctly. So
+  "authoritative says no" is not conclusive on Namecheap — check public
+  resolvers too before concluding a record is missing.
+
+### Outstanding on this thread
+
+- `family-reunion.sovereignvalorgroup.com` is still attached to the Vercel project
+  with no DNS behind it. Inert, but should be removed via the dashboard —
+  `vercel domains rm` only handles account-level domains, not project subdomains.
+- Both `fam` and `awa` point at deployment-specific `*.vercel.app` hostnames
+  rather than `cname.vercel-dns.com`. Works today; fragile across project renames.
