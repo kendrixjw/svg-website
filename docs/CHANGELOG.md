@@ -324,3 +324,47 @@ chosen earlier — venture "Family Reunion", product "Spades & Bones". That
 question is now settled.
 
 Venture status spread is now: Beta ×1, Live ×3, In Development ×3.
+
+---
+
+## 2026-08-22 — Family Reunion share card; subdomain half-done
+
+### Share card (commit `0b14071`, deployed)
+
+Family Reunion was the last venture falling back to the generic company OG
+image, which mattered more once it went Live. Built a matching 1200x630 card:
+navy gradient, gold rules, emblem + "A Sovereign Valor Group venture", category
+pill, serif name with "Spades & Bones" beneath, description, URL, and a
+screenshot of the live app in browser chrome.
+
+Method (no image tooling installed, and `sharp` was declined): composed the card
+as an HTML page with both images inlined as base64, served it locally, and
+captured the region at exactly 1200x630 through the browser. The generator lives
+in the session scratchpad, not the repo — regenerating means re-running it.
+
+**All seven ventures now have their own share card.**
+
+Caveat: the file is 641 KB, versus 107–230 KB for the hand-made siblings —
+a consequence of PNG-encoding a screenshot without a compressor. It is fetched
+only by crawlers and link-preview bots, never as part of page load. Worth
+re-encoding if `sharp` is ever added.
+
+The card prints `family-reunion-spades-bones.vercel.app`. **It will need
+regenerating once the subdomain is live.**
+
+### Subdomain — Vercel side done, DNS outstanding
+
+`family-reunion.sovereignvalorgroup.com` is attached to the
+`family-reunion-spades-bones` Vercel project. As of 2026-08-22 the DNS record has
+not been created and the hostname does not resolve.
+
+Remaining step, at Namecheap (Advanced DNS): `CNAME` / host `family-reunion` /
+value `cname.vercel-dns.com`. Then `vercel domains verify
+family-reunion.sovereignvalorgroup.com`, and update `data/ventures.json`.
+
+The registry deliberately still points at the working `.vercel.app` URL — the
+card and links must not switch until the subdomain resolves.
+
+Note: the existing `awa` record points at a deployment-specific hostname
+(`awa-a3p7741wg-kendrixjw-projects.vercel.app`) rather than `cname.vercel-dns.com`.
+That is fragile across redeploys and worth changing.
