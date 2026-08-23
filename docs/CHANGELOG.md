@@ -459,3 +459,51 @@ dashboard: Project → Settings → Domains. Harmless until then.
   print the old `.vercel.app` URLs**. These are the original hand-made cards with
   real product screenshots; they were deliberately left alone rather than
   regenerated at lower quality. The printed URLs still resolve.
+
+---
+
+## 2026-08-22 — Phase 4 QA and performance measurement (live site)
+
+The spec's Phase 4 QA had only ever been run against local build output. Ran it
+against production, plus the §19 performance measurement that was never done.
+
+### QA sweep — 0 failures, 0 warnings
+
+Checked on `https://sovereignvalorgroup.com`:
+
+- `sitemap.xml` and `robots.txt` return 200; robots references the sitemap
+- All 15 indexable pages return 200
+- Every canonical URL matches its own page
+- Exactly one `<h1>` per page
+- No duplicate titles or meta descriptions anywhere
+- GA4 tag present on every page
+- 26 unique internal links — none broken
+- All 9 OG images referenced actually exist and return 200
+- JSON-LD parses; 9 nodes; Organization `owns` all 7 ventures; every
+  SoftwareApplication node carries a URL, none pointing at `*.vercel.app`
+- Unknown paths return a real 404 carrying `noindex`
+
+Script kept in the session scratchpad (`qa.mjs`), not the repo.
+
+### Performance — measured, not estimated
+
+Actual transfer per page (gzip where it applies):
+
+| Asset | Wire | Note |
+|---|---|---|
+| `svg-logo-mark.png` | **251.7 KB** | uncompressible; on every page |
+| `gtag.js` | 165.6 KB | third party |
+| document | ~6 KB | gzip |
+| `styles.css` | 5.9 KB | gzip |
+| `site.js` | 3.6 KB | gzip |
+
+**The hand-written part of the site is ~15 KB per page.** The logo alone is
+17× that, and 58% of all first-party bytes. It renders at 50 px in the nav,
+40 px in the footer, and up to 520 px as the hero watermark — one 251 KB PNG
+serving all three.
+
+A zero-dependency fix is now available: the browser-capture technique used for
+the Family Reunion share card can re-encode the logo through a canvas to WebP at
+an appropriate size, with a PNG fallback. No `sharp`, no dependency. Awaiting
+owner approval since image work was previously declined — this measurement
+postdates that decision.
