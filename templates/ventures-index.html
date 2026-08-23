@@ -6,8 +6,9 @@
       </div>
     </section>
 
-    <section class="ventures">
+    <section class="ventures" aria-labelledby="roster-heading">
       <div class="container">
+        <h2 id="roster-heading" class="visually-hidden">The venture portfolio</h2>
         <div class="roster">
 {{#each ventures}}{{> venture-row}}{{/each}}        </div>
       </div>
