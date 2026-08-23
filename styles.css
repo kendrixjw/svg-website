@@ -23,9 +23,12 @@
   --radius: 20px;
 
   /* --- Status --- */
-  --status-live: #3d8168;
+  /* Light-background variants. Darkened to clear WCAG AA (4.5:1) on both
+     parchment and white — the originals measured 4.10 and 3.13. Status pills
+     currently only render on the dark band, so this is a latent fix. */
+  --status-live: #316854;
   --status-live-on-dark: #8fd4a8;
-  --status-beta: #5b8db8;
+  --status-beta: #3a6a91;
   --status-beta-on-dark: #9fc6e6;
   --status-dev: var(--gold);
   --status-dev-on-dark: var(--gold-hi);
