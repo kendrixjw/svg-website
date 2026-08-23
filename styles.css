@@ -17,6 +17,15 @@
   --white: #ffffff;
   --steel: #9db0c4;        /* muted text on dark */
   --slate: #35424f;        /* body text on light */
+  --on-dark: #dde6f0;      /* lead paragraphs on navy */
+  --on-dark-soft: #cdd8e4; /* secondary text on navy */
+  --on-dark-list: #eaf1f8; /* list text inside the hero card */
+  --slate-soft: #4a5a6a;   /* secondary text on light */
+  --footer-bg: #040b13;    /* deepest band, below --ink */
+  --navy-lift: #123055;    /* gradient terminus in the hero */
+  --muted: #616c78;        /* optional-field hint text — AA on parchment (4.75:1) */
+  --error: #93301f;        /* form error text */
+  --error-line: #b3402f;   /* form error border */
   --line-dark: rgba(255, 255, 255, .12);
   --line-gold: rgba(200, 155, 60, .45);
   --shadow: 0 24px 70px rgba(7, 21, 37, .16);
@@ -218,7 +227,7 @@ p { max-width: var(--measure); }
   padding: clamp(var(--s6), 9vw, 104px) 0 clamp(var(--s6), 9vw, 112px);
   background:
     radial-gradient(circle at 78% 8%, rgba(200,155,60,.20), transparent 32%),
-    linear-gradient(150deg, var(--ink) 0%, var(--navy) 68%, #123055 100%);
+    linear-gradient(150deg, var(--ink) 0%, var(--navy) 68%, var(--navy-lift) 100%);
 }
 .hero::after,
 .ventures::after,
@@ -240,7 +249,7 @@ p { max-width: var(--measure); }
 }
 .hero h1 { color: var(--white); }
 .hero h1 em { font-style: normal; color: var(--gold-hi); }
-.hero-text { font-size: 1.17rem; color: #dde6f0; max-width: 620px; }
+.hero-text { font-size: 1.17rem; color: var(--on-dark); max-width: 620px; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: var(--s4); }
 
 .hero-card {
@@ -257,7 +266,7 @@ p { max-width: var(--measure); }
   font-family: "Public Sans", sans-serif; font-weight: 700;
   margin-bottom: var(--s3);
 }
-.hero-card ul { list-style: none; margin: 0; padding: 0; color: #eaf1f8; }
+.hero-card ul { list-style: none; margin: 0; padding: 0; color: var(--on-dark-list); }
 .hero-card li {
   padding: 11px 0 11px 26px; position: relative;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -317,7 +326,7 @@ p { max-width: var(--measure); }
   color: var(--ink); font-size: 1.05rem; letter-spacing: .03em; margin-bottom: 2px;
 }
 .band--dark .credibility strong { color: var(--white); }
-.credibility span { color: #4a5a6a; font-size: .97rem; }
+.credibility span { color: var(--slate-soft); font-size: .97rem; }
 .band--dark .credibility span { color: var(--steel); }
 
 /* ---------- Venture roster (signature) ---------- */
@@ -367,7 +376,7 @@ p { max-width: var(--measure); }
   font-size: .72rem; font-weight: 700; letter-spacing: .18em;
   text-transform: uppercase; color: var(--gold-hi);
 }
-.venture-desc { color: #cdd8e4; font-size: .99rem; margin: 0; }
+.venture-desc { color: var(--on-dark-soft); font-size: .99rem; margin: 0; }
 .venture-actions {
   justify-self: end;
   display: flex; flex-direction: column; align-items: flex-end; gap: var(--s1);
@@ -411,7 +420,7 @@ p { max-width: var(--measure); }
   padding: clamp(var(--s5), 7vw, 88px) 0;
 }
 .page-hero h1 { color: var(--white); }
-.page-hero p { font-size: 1.16rem; color: #dde6f0; max-width: 680px; }
+.page-hero p { font-size: 1.16rem; color: var(--on-dark); max-width: 680px; }
 
 /* ---------- Content pages ---------- */
 .content-page h2 { margin-top: var(--s5); }
@@ -428,7 +437,7 @@ p { max-width: var(--measure); }
   color: var(--ink); font-size: 1.08rem;
   letter-spacing: .04em; margin-bottom: 2px;
 }
-.value-list span { color: #4a5a6a; }
+.value-list span { color: var(--slate-soft); }
 
 .cta-panel {
   margin-top: var(--s6);
@@ -447,7 +456,7 @@ p { max-width: var(--measure); }
 .field { display: grid; gap: 6px; }
 .field label { font-weight: 700; font-size: .92rem; color: var(--ink); }
 .field label span[aria-hidden] { color: var(--gold-ink); }
-.field .optional { color: #6b7885; font-weight: 400; }
+.field .optional { color: var(--muted); font-weight: 400; }
 .field input,
 .field select,
 .field textarea {
@@ -468,9 +477,9 @@ p { max-width: var(--measure); }
   box-shadow: 0 0 0 3px rgba(200,155,60,.24);
   outline: none;
 }
-.field [aria-invalid="true"] { border-color: #b3402f; }
-.field-error { color: #93301f; font-size: .88rem; font-weight: 600; }
-.form-note { font-size: .95rem; color: #4a5a6a; }
+.field [aria-invalid="true"] { border-color: var(--error-line); }
+.field-error { color: var(--error); font-size: .88rem; font-weight: 600; }
+.form-note { font-size: .95rem; color: var(--slate-soft); }
 .form-note a { color: var(--gold-ink); font-weight: 700; }
 .contact-form .button.primary { justify-self: start; }
 .form-status { font-weight: 700; color: var(--gold-ink); margin: 0; }
@@ -486,7 +495,7 @@ p { max-width: var(--measure); }
 .form-replacement a { color: var(--gold-ink); font-weight: 700; }
 
 /* ---------- Footer ---------- */
-.footer { background: #040b13; color: var(--steel); padding: var(--s6) 0 var(--s5); }
+.footer { background: var(--footer-bg); color: var(--steel); padding: var(--s6) 0 var(--s5); }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
