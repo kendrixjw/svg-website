@@ -581,3 +581,35 @@ Contrast pairs are declared by hand in the script; four literal colours in the
 stylesheet aren't tokenised and are duplicated there (`--hero-text` and friends).
 If those literals change in `src/styles.css`, the checker will silently test the
 old values. Tokenising them would remove the duplication.
+
+---
+
+## 2026-08-22 — Colour tokenisation, and the AA failure it exposed (commit `dbf6539`)
+
+Closed the limitation recorded in the previous entry: literal colours in
+`src/styles.css` were duplicated inside the contrast checker and could drift.
+
+All nine remaining literals are now `:root` tokens — `--on-dark`,
+`--on-dark-soft`, `--on-dark-list`, `--slate-soft`, `--footer-bg`,
+`--navy-lift`, `--muted`, `--error`, `--error-line`. **No hex literal remains
+outside `:root`.** `check.mjs` resolves every pair by token name and throws on
+an unknown token rather than silently testing a stale value.
+
+### It immediately found a real bug
+
+The `(optional)` hint text in contact-form labels uses `--muted`, rendering on
+the parchment page background at **4.01:1** — below the 4.5:1 AA threshold, and
+**visible to real users on the live contact page**.
+
+The earlier accessibility audit missed it for exactly the reason this change
+addresses: the colour wasn't tokenised, so it was never in the pair list.
+Darkened `#6b7885` → `#616c78`: now 4.75:1 on parchment, 5.35:1 on white.
+
+This is the clearest argument in this log for tokenising design values — the
+audit that "passed" was only ever as complete as its hand-written input list.
+
+### Coverage
+
+Contrast pairs: 17 → 23, adding the form hint, form error text, hero-card list,
+and the hero gradient terminus. Total checks: 42 → 48. Passing on both the local
+preview and production.
