@@ -410,3 +410,52 @@ The record took several attempts. What the failures looked like:
   `vercel domains rm` only handles account-level domains, not project subdomains.
 - Both `fam` and `awa` point at deployment-specific `*.vercel.app` hostnames
   rather than `cname.vercel-dns.com`. Works today; fragile across project renames.
+
+---
+
+## 2026-08-22 — All ventures on first-party subdomains
+
+Commits `e7a7305` and `62ee451`, deployed and verified live.
+
+Every venture is now reached through `sovereignvalorgroup.com` or its own
+domain. **No raw `*.vercel.app` hostname appears anywhere on the site.**
+
+| Venture | URL |
+|---|---|
+| Devotion After Victory | `https://devotionaftervictory.com` |
+| OpsConduit | `https://ops.sovereignvalorgroup.com` |
+| Lottery Pattern Engine | `https://lpe.sovereignvalorgroup.com` |
+| Vocasa | `https://voc.sovereignvalorgroup.com` |
+| Accountability Workout App | `https://awa.sovereignvalorgroup.com` |
+| Lumira | `https://lum.sovereignvalorgroup.com` |
+| Family Reunion | `https://fam.sovereignvalorgroup.com` |
+
+All seven verified live: HTTP 200, correct app, and a certificate issued for the
+subdomain itself.
+
+**Naming convention: the venture monogram, lowercased** — `awa`, `fam`, `lpe`,
+`lum`, `ops`, `voc` — matching the `code` field in `data/ventures.json`. This was
+the owner's choice; earlier suggestions of `family-reunion`, `vocasa`, and
+`lumira` were dropped in favor of it. Any future venture should follow the same
+pattern: `<code>.sovereignvalorgroup.com`.
+
+### Stale Vercel project domains to clear
+
+Attached to projects during this work, superseded, and now inert with no DNS:
+
+- `family-reunion.sovereignvalorgroup.com` (family-reunion-spades-bones)
+- `vocasa.sovereignvalorgroup.com` (vocasa)
+- `lumira.sovereignvalorgroup.com` (lumira)
+
+`vercel domains rm` only handles account-level domains, so these need the
+dashboard: Project → Settings → Domains. Harmless until then.
+
+### Still outstanding
+
+- Every DNS row points at a **deployment-specific** `*.vercel.app` hostname
+  rather than `cname.vercel-dns.com`. All six work today, but each is tied to its
+  project's generated URL and would break on a project rename. Worth a sweep.
+- The OpsConduit, Lottery Pattern Engine, Vocasa, and Lumira **share cards still
+  print the old `.vercel.app` URLs**. These are the original hand-made cards with
+  real product screenshots; they were deliberately left alone rather than
+  regenerated at lower quality. The printed URLs still resolve.
