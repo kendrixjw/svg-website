@@ -724,3 +724,30 @@ Both findings are recorded as comments on their PRs.
   layout was rewritten by hand.
 - Committed with a private email, which GitHub rejected. Re-authored with the
   account's `users.noreply` address — the same identity this repo already uses.
+
+### Verified the rendered previews, not just the diffs — two were wrong
+
+Reviewing the diffs was not enough. Loading each Vercel preview and inspecting
+the live DOM found two defects that looked fine in the patch:
+
+- **Devotion After Victory — the link never rendered.** The homepage supplies
+  its own footer, so the `GlobalFooter` component that was edited is not on that
+  page at all. Fixed by linking the "Sovereign Valor Group LLC" text the
+  homepage footer already printed, which is better than adding a duplicate line.
+  The `GlobalFooter` edit is kept, since it still covers pages without a
+  bespoke footer.
+- **Vocasa — the link was present but unreachable.** `body` is `overflow: hidden`
+  for the editor shell, so the landing page could not scroll and the footer sat
+  ~1200px down: in the DOM for crawlers, invisible to people. That is a hidden
+  link, which is a spam signal rather than a ranking signal — the opposite of the
+  intent. Fixed by bounding the landing wrapper to `h-screen` with
+  `overflow-y-auto` so it scrolls independently of the app shell.
+
+Confirmed after rebuild: DAV renders one backlink inside its footer; Vocasa's
+wrapper is now genuinely scrollable (`scrollTop` moves, link reaches the
+viewport). Family Reunion and Lumira were correct first time.
+
+A note worth keeping: an earlier check of these previews with `curl` reported
+zero backlinks on all four. That reading was worthless — Vercel deployment
+protection was returning its SSO login page with HTTP 200. The browser, carrying
+the owner's Vercel session, was the only way to see the real output.
