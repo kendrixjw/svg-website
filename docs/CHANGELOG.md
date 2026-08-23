@@ -751,3 +751,46 @@ A note worth keeping: an earlier check of these previews with `curl` reported
 zero backlinks on all four. That reading was worthless — Vercel deployment
 protection was returning its SSO login page with HTTP 200. The browser, carrying
 the owner's Vercel session, was the only way to see the real output.
+
+---
+
+## 2026-08-23 — Root cause of the two failing preview builds
+
+Chased the LPE and OpsConduit preview failures to ground rather than leaving
+them as "environmental".
+
+**Actual error, from the Vercel dashboard:**
+
+> Build Failed — Provisioning integrations failed  ·  Duration: 1s
+
+The deployment never reaches the build step. Neither the code nor the
+environment variables are involved.
+
+**The common factor is the Neon Postgres integration.** LPE and OpsConduit are
+the only two ventures using it, and they are the only two whose previews fail.
+The four without Neon (DAV, Family Reunion, Vocasa, Lumira) all deployed fine.
+Preview deployments provision Neon resources — typically a database branch per
+preview — and that provisioning is what fails. Likely a branch limit on the free
+plan, or an integration needing reauthorization.
+
+### Two wrong hypotheses discarded on the way
+
+Both were plausible, both were checked, both were wrong:
+
+1. **"Missing Preview-scope env vars."** `vercel env ls` shows LPE has every
+   Postgres variable scoped to Production, Preview, and Development. The only
+   Preview gap was `CRON_SECRET`.
+2. **"`CRON_SECRET` breaks the build."** It is read inside the route handler and
+   guarded by `if (secret)`, so a missing value cannot fail a build. Reading the
+   code disproved it in under a minute.
+
+The first hypothesis had already been posted as a comment on both PRs. Those
+comments have been **corrected** — leaving a confident wrong diagnosis in the
+repo is worse than leaving none.
+
+### Lesson recorded
+
+`vercel inspect --logs` returned only `status ● Error` for both deployments and
+never surfaced the message. The dashboard, opened in the browser with the
+owner's session, showed the real error immediately. When the CLI is silent about
+a failure, the dashboard is not a fallback — it is the primary source.
