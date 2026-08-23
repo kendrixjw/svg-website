@@ -507,3 +507,42 @@ the Family Reunion share card can re-encode the logo through a canvas to WebP at
 an appropriate size, with a PNG fallback. No `sharp`, no dependency. Awaiting
 owner approval since image work was previously declined — this measurement
 postdates that decision.
+
+---
+
+## 2026-08-22 — WCAG 2.2 AA audit (commit `e31d3cc`)
+
+Spec §20 claimed AA where practical but had never been systematically verified.
+Audited the live site: 18 colour pairs computed from the real design tokens,
+plus markup checks across 7 representative pages.
+
+### Fixed
+
+- **Status pill colours for light backgrounds** measured 4.10:1 (Live) and
+  3.13:1 (Beta) on parchment — below the 4.5:1 threshold. Darkened to `#316854`
+  and `#3a6a91`, now 5.75:1 and 5.10:1, and passing on white as well.
+  These variants are **not currently rendered** — pills only appear on the dark
+  band, where they already measured 9.11:1 and 8.77:1 — so this closes a latent
+  failure rather than a visible one.
+- **Heading order on `/ventures/`** jumped h1 → h3, because the roster had no
+  section heading. Added a visually-hidden `h2` wired up with `aria-labelledby`,
+  which also gives screen-reader users a landmark for the portfolio.
+
+### Passed
+
+All 16 other colour pairs; alt text on every image; `main`/`header`/`footer`
+landmarks; skip link; named primary nav; labels on all form controls; discernible
+button names; no vague link text; `rel="noopener"` on every external link;
+correct heading order on all other pages.
+
+**Result after fixes: 0 contrast failures, 0 markup issues.**
+
+Audit script (`a11y.mjs`) is in the session scratchpad. It reads the colour
+tokens from the deployed stylesheet rather than hardcoding them — the first
+version hardcoded them and reported stale failures after the fix had shipped.
+
+### Not covered by this audit
+
+Automated checks cannot confirm: focus order matching visual order, screen-reader
+announcement quality, or the mobile menu's focus trap in real assistive tech.
+Those need manual testing with a real screen reader.
