@@ -672,3 +672,55 @@ site's JSON-LD: the parent claims the ventures, but the ventures do not claim
 the parent.
 
 Those apps live in separate repositories, so the change is outside this project.
+
+---
+
+## 2026-08-23 — Backlinks from the ventures (six PRs, separate repos)
+
+Acting on the discoverability finding: six of seven ventures did not link to the
+parent company. Opened a PR against each, adding one footer line linking to
+`https://sovereignvalorgroup.com`.
+
+| Venture | PR | Preview build |
+|---|---|---|
+| Devotion After Victory | kendrixjw/dav#27 | pass |
+| Family Reunion | kendrixjw/family-reunion-spades-bones#1 | pass |
+| Vocasa | kendrixjw/vocasa#5 | pass |
+| Lumira | kendrixjw/lumira#1 | pass |
+| Lottery Pattern Engine | kendrixjw/lottery-pattern-engine#10 | fails — pre-existing |
+| OpsConduit | kendrixjw/OpsConduit#56 | fails — pre-existing |
+
+**PRs rather than direct pushes**, since each repo auto-deploys to production on
+merge and none of these apps had been built or reviewed here before.
+
+### Placement was decided per app, not applied uniformly
+
+- `dav`, `family-reunion` — appended to the existing footer component
+- `lottery-pattern-engine` — new footer in the root layout, after `<Disclaimer />`
+- `OpsConduit` — new footer inside `<body>` in the root layout
+- `vocasa` — landing page, **not** the root layout: that layout is
+  `overflow-hidden` for the editor shell, and the landing page is the indexable one
+- `lumira` — inside the 2D desktop-preview overlay, clear of the A-Frame VR scene
+
+### The two failing builds are not caused by this change
+
+- **OpsConduit** — the repo's own CI passes on the branch (typecheck, lint, test,
+  build, Postgres integration tests). Vercel *preview* builds have failed for
+  19–23 days while *production* succeeded, which points at missing Preview-scope
+  env vars.
+- **Lottery Pattern Engine** — cloned the branch and ran `next build` locally:
+  compiled, typechecked, all 14 routes generated. The app reads Postgres at build
+  time, so a missing `DATABASE_URL` in the Preview scope is the likely cause.
+
+Both findings are recorded as comments on their PRs.
+
+### Mistakes made along the way
+
+- First edit pass used LF line endings against CRLF files, so every replacement
+  silently matched nothing. Switched to line-based insertion that preserves the
+  file's existing endings.
+- Inserting "before `</body>`" put the footer *outside* `<body>` in OpsConduit,
+  where the tag was on a single line. Caught on inspection before pushing; that
+  layout was rewritten by hand.
+- Committed with a private email, which GitHub rejected. Re-authored with the
+  account's `users.noreply` address — the same identity this repo already uses.
