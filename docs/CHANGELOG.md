@@ -546,3 +546,38 @@ version hardcoded them and reported stale failures after the fix had shipped.
 Automated checks cannot confirm: focus order matching visual order, screen-reader
 announcement quality, or the mobile menu's focus trap in real assistive tech.
 Those need manual testing with a real screen reader.
+
+---
+
+## 2026-08-22 — Verification moved into the repo
+
+The QA, performance, and accessibility checks written during this session lived
+in a temp scratchpad and would have been lost. They are now `scripts/check.mjs`,
+wired to `npm run check` (local preview) and `npm run check:live` (production).
+Zero dependencies, exits non-zero on failure so it can gate a deploy or front CI.
+
+Consolidates every check run manually this session: reachability, canonicals,
+heading order, metadata uniqueness, OG images, internal links, structured data,
+registry/schema agreement, venture URL reachability, WCAG AA contrast computed
+from `src/styles.css`, and the automatable markup accessibility checks.
+
+**Current result: 42 passed, 0 warnings, 0 failures** — against both the local
+preview and production.
+
+### The checker was tested against injected faults
+
+A check suite that only ever passes proves nothing, so three faults were injected
+into a build and confirmed caught: a broken internal link, an `<img>` without
+`alt`, and a duplicate `<title>`.
+
+Worth recording: the first duplicate-title attempt was **not** caught, which
+looked like a gap in the checker. It wasn't — the injected title used a literal
+`&` where the real markup has `&amp;`, so the two titles genuinely differed. The
+faulty test was the test, not the tool. Re-run with an exact match, it caught it.
+
+### Known limitation
+
+Contrast pairs are declared by hand in the script; four literal colours in the
+stylesheet aren't tokenised and are duplicated there (`--hero-text` and friends).
+If those literals change in `src/styles.css`, the checker will silently test the
+old values. Tokenising them would remove the duplication.

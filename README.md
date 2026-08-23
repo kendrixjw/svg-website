@@ -82,6 +82,31 @@ Edit the relevant file in `templates/`. Shared chrome lives in
 | `npm run build` | Build into `dist/` — safe, gitignored, doesn't touch live files |
 | `npm run preview` | Build, then serve `dist/` at `localhost:8899` |
 | `npm run build:site` | **Build over the live files at the repo root.** Deploy step. |
+| `npm run check` | Verify the local preview (needs `npm run preview` running) |
+| `npm run check:live` | Verify production |
+
+### Verification
+
+`npm run check` is the pre-deploy gate. It exits non-zero on any failure, so it
+can front a CI step later. It checks:
+
+- Every sitemap page returns 200, with a matching canonical
+- Exactly one `<h1>` per page and no skipped heading levels
+- No duplicate titles or meta descriptions across the site
+- Every referenced OG image exists
+- Every internal link resolves
+- JSON-LD parses, and its venture URLs agree with `data/ventures.json`
+- Every venture URL in the registry is https and reachable
+- WCAG 2.2 AA contrast for all 17 colour pairs, read from `src/styles.css`
+- Alt text, landmarks, skip link, form labels, button names, link text,
+  and `rel="noopener"` on external links
+- `robots.txt`, sitemap wiring, and 404 behavior
+
+Set `VERBOSE=1` to list passing checks too.
+
+It **cannot** verify focus order against visual order, screen-reader
+announcement quality, or the mobile menu in real assistive tech. Those stay
+manual.
 
 ---
 
