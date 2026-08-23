@@ -613,3 +613,62 @@ audit that "passed" was only ever as complete as its hand-written input list.
 Contrast pairs: 17 → 23, adding the form hint, form error text, hero-card list,
 and the hero gradient terminus. Total checks: 42 → 48. Passing on both the local
 preview and production.
+
+---
+
+## 2026-08-23 — Discoverability check: the SEO work is not yet reaching anyone
+
+Spec §16/§17 (SEO and AI discoverability) were implemented and verified as
+*correct*, but never tested for *effect*. Tested.
+
+### Finding: the site is invisible to search
+
+Searches for `"Sovereign Valor Group"` and for `sovereignvalorgroup.com` return
+no results for this company. Competitors with similar names dominate the term.
+
+### It is not a technical fault
+
+Verified against production:
+
+- Googlebot (by user-agent) receives HTTP 200 on the homepage and the sitemap
+- No `X-Robots-Tag` response header
+- No `<meta name="robots">` on indexable pages
+- `robots.txt` serves `Allow: /` and references the sitemap
+- All 15 pages carry unique titles, descriptions, canonicals, and JSON-LD
+
+The site is fully crawlable. Nothing is blocking indexing.
+
+### Cause: nothing has told search engines the site exists
+
+Two gaps, both outside the codebase:
+
+1. **Never submitted.** Google Search Console verification and sitemap
+   submission have not been done. Requires the owner's Google account.
+2. **Essentially no inbound links.** Search engines discover sites primarily by
+   following links, and almost nothing points here.
+
+### The inbound-link gap is self-inflicted and fixable
+
+Checked all seven venture sites for a link back to the parent company:
+
+| Venture | Links back? |
+|---|---|
+| Accountability Workout App | yes |
+| Devotion After Victory | mentions "Sovereign Valor" but does not link |
+| OpsConduit | no mention |
+| Lottery Pattern Engine | no mention |
+| Vocasa | no mention |
+| Lumira | no mention |
+| Family Reunion | no mention |
+
+Six of seven owned properties do not link to the parent. Adding a footer line —
+"A Sovereign Valor Group venture", linked to `https://sovereignvalorgroup.com` —
+would create six inbound links from genuinely related sites, which is exactly
+the signal search engines and AI systems use to associate a portfolio with its
+parent. It also makes the venture-studio relationship legible to humans.
+
+This mirrors, in reverse, the `owns` relationships already declared in the
+site's JSON-LD: the parent claims the ventures, but the ventures do not claim
+the parent.
+
+Those apps live in separate repositories, so the change is outside this project.
