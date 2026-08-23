@@ -53,19 +53,24 @@ const tok = (n) => {
   return m[1];
 };
 
-// Literal colours that appear in the stylesheet but aren't tokenised.
-const LIT = { heroText: "#dde6f0", ventureDesc: "#cdd8e4", credSpan: "#4a5a6a", footerBg: "#040b13" };
-
+// Every colour is tokenised, so nothing here can silently drift from the
+// stylesheet — an unknown token name throws rather than testing a stale value.
 const PAIRS = [
   ["body text on parchment", tok("slate"), tok("parchment"), 4.5],
   ["headings on parchment", tok("ink"), tok("parchment"), 3],
   ["gold-ink on parchment", tok("gold-ink"), tok("parchment"), 4.5],
   ["gold-ink on white", tok("gold-ink"), tok("white"), 4.5],
-  ["credibility body on parchment", LIT.credSpan, tok("parchment"), 4.5],
-  ["hero text on ink", LIT.heroText, tok("ink"), 4.5],
-  ["venture description on navy", LIT.ventureDesc, tok("navy"), 4.5],
+  ["credibility body on parchment", tok("slate-soft"), tok("parchment"), 4.5],
+  ["muted hint on parchment", tok("muted"), tok("parchment"), 4.5],
+  ["muted hint on white", tok("muted"), tok("white"), 4.5],
+  ["error text on white", tok("error"), tok("white"), 4.5],
+  ["error text on parchment", tok("error"), tok("parchment"), 4.5],
+  ["hero text on ink", tok("on-dark"), tok("ink"), 4.5],
+  ["hero text on navy-lift", tok("on-dark"), tok("navy-lift"), 4.5],
+  ["hero card list on navy", tok("on-dark-list"), tok("navy"), 4.5],
+  ["venture description on navy", tok("on-dark-soft"), tok("navy"), 4.5],
   ["steel on ink", tok("steel"), tok("ink"), 4.5],
-  ["steel on footer", tok("steel"), LIT.footerBg, 4.5],
+  ["steel on footer", tok("steel"), tok("footer-bg"), 4.5],
   ["gold-hi on ink", tok("gold-hi"), tok("ink"), 4.5],
   ["white on navy", tok("white"), tok("navy"), 4.5],
   ["Live pill on parchment", tok("status-live"), tok("parchment"), 4.5],
