@@ -794,3 +794,27 @@ repo is worse than leaving none.
 never surfaced the message. The dashboard, opened in the browser with the
 owner's session, showed the real error immediately. When the CLI is silent about
 a failure, the dashboard is not a fallback — it is the primary source.
+
+---
+
+## 2026-08-23 — Four backlink PRs merged and live
+
+Merged and verified in production:
+
+| Venture | Anchor text | Live |
+|---|---|---|
+| Devotion After Victory | "Sovereign Valor Group LLC" | ✅ |
+| Family Reunion | "A Sovereign Valor Group venture" | ✅ |
+| Vocasa | "A Sovereign Valor Group venture" | ✅ |
+| Lumira | "A Sovereign Valor Group venture" | ✅ |
+
+**Backlink coverage is now 5 of 7** (these four plus the Accountability Workout
+App, which already linked back). OpsConduit and Lottery Pattern Engine remain
+open — their code is verified correct, but their preview deployments cannot
+build until the Neon integration provisioning is repaired, so they were not
+merged with the rest.
+
+Search engines now have five paths into `sovereignvalorgroup.com` from live,
+topically related sites. Expect a lag of days to weeks before this shows up in
+results; the baseline recorded on 2026-08-23 was that the company did not appear
+in search for its own name.
