@@ -611,3 +611,35 @@ p { max-width: var(--measure); }
   .hero-actions .button, .mission-actions .button { width: 100%; }
   .venture-code { width: 54px; height: 54px; font-size: .85rem; }
 }
+
+
+/* --- Services pricing (added 2026-10-02) --- */
+.service-short { color: var(--accent, #b99a5b); margin-bottom: .5rem; }
+.price-from { margin-top: 1rem; font-size: 1.02rem; }
+.price-list { list-style: none; padding: 0; margin: .6rem 0 1.2rem; font-size: .93rem; opacity: .85; }
+.price-list li { padding: .28rem 0; border-bottom: 1px solid rgba(255,255,255,.07); }
+.price-list li:last-child { border-bottom: none; }
+.entry-offer { text-align: left; }
+.entry-duration { font-size: .9rem; text-transform: uppercase; letter-spacing: .08em; opacity: .7; margin-bottom: .8rem; }
+
+/* --- Credentials stat band (added 2026-10-02) --- */
+.stat-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1.5rem; text-align: center; }
+.stat-figure { font-family: 'Cinzel', serif; font-size: 2.4rem; line-height: 1; margin: 0 0 .35rem; color: var(--accent, #b99a5b); }
+.stat-label { font-weight: 700; margin: 0 0 .25rem; }
+.stat-note { font-size: .86rem; opacity: .72; margin: 0; }
+.stat-caption { text-align: center; max-width: 60ch; margin: 2rem auto 0; opacity: .8; font-size: .95rem; }
+
+/* --- Credential lists, About page (added 2026-10-02) --- */
+.cred-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.cred-list { list-style: none; padding: 0; margin: .8rem 0 0; font-size: .93rem; }
+.cred-list li { padding: .45rem 0; border-bottom: 1px solid rgba(255,255,255,.07); opacity: .88; }
+.cred-list li:last-child { border-bottom: none; }
+
+/* --- Work page (added 2026-10-02) --- */
+.work-head {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .6rem;
+}
+.work-head h2 { margin: 0; }
+.work-url { margin: .5rem 0 1rem; font-size: .93rem; word-break: break-word; }
+.work-url a { color: var(--gold-ink); font-weight: 700; }

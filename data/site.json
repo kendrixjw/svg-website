@@ -19,6 +19,10 @@
       "href": "/services.html"
     },
     {
+      "label": "Work",
+      "href": "/work.html"
+    },
+    {
       "label": "Ventures",
       "href": "/ventures/"
     },
@@ -47,72 +51,216 @@
   ],
   "services": [
     {
-      "id": "strategic-planning",
-      "name": "Strategic Planning",
-      "short": "Move from ideas to executable plans.",
-      "body": "We define the mission, prioritize the work, and create a clear execution path with milestones, risks, and measurable outcomes.",
-      "icon": "compass"
+      "id": "web-design",
+      "name": "Website Design & Development",
+      "icon": "layers",
+      "short": "Sites built to convert, not just to launch.",
+      "body": "Custom websites designed around what you need visitors to actually do. Responsive, accessible, measurable, and built on a foundation you own outright — no rented page builder, no mystery plugins.",
+      "priceFrom": "$1,800",
+      "bullets": [
+        "Landing page — $1,800",
+        "Starter site, up to 5 pages — $4,500",
+        "Business site, up to 12 pages — $9,500",
+        "Visual refresh — $2,500",
+        "Full redesign — from $12,000"
+      ]
     },
     {
-      "id": "program-management",
-      "name": "Project & Program Management",
-      "short": "Structure, accountability, and execution frameworks.",
-      "body": "We bring disciplined project and program management to complex initiatives — schedules, governance, and reporting that keep teams aligned and accountable.",
-      "icon": "chart"
+      "id": "integration",
+      "name": "App & Systems Integration",
+      "icon": "nodes",
+      "short": "Make the tools you already pay for talk to each other.",
+      "body": "Information should move on its own. We connect your platforms with source-of-truth rules, error handling and monitoring — an integration backbone, not a brittle export that breaks the first time someone renames a field.",
+      "priceFrom": "$5,500",
+      "bullets": [
+        "Workspace foundation, up to 25 users — $5,500",
+        "CRM implementation — $7,500",
+        "Integration build, two systems — from $8,000",
+        "Each additional system — +$3,000",
+        "Financial systems setup — $3,500"
+      ]
     },
     {
-      "id": "systems-integration",
-      "name": "Systems Integration & Automation",
-      "short": "Connect your tools and cut the manual work.",
-      "body": "We connect tools, workflows, APIs, and business systems so information moves on its own — reducing double-entry and the errors that come with it.",
-      "icon": "nodes"
-    },
-    {
-      "id": "technical-documentation",
-      "name": "Technical Documentation",
-      "short": "Documentation people actually use.",
-      "body": "We create clear technical, operational, training, process, and compliance documentation that captures how the work is really done.",
-      "icon": "document"
-    },
-    {
-      "id": "product-development",
-      "name": "Product Design & Development",
-      "short": "Turn business concepts into working products.",
-      "body": "We turn business concepts into digital products, applications, workflows, and user experiences — designed, built, and shipped.",
-      "icon": "layers"
-    },
-    {
-      "id": "veteran-venture-support",
-      "name": "Veteran-Owned Venture Support",
-      "short": "Support built for veteran entrepreneurs.",
-      "body": "We help veteran entrepreneurs structure, build, modernize, and scale technology-driven businesses — from first plan to running system.",
-      "icon": "shield"
+      "id": "consulting",
+      "name": "Consulting & Advisory",
+      "icon": "compass",
+      "short": "Program management and engineering judgment, on your team.",
+      "body": "Project and program management, technical architecture, and delivery oversight — from a practice that builds the work rather than only reporting on it. Available by the project, by the day, or as an ongoing retainer.",
+      "priceFrom": "$165/hr",
+      "bullets": [
+        "Systems audit, two weeks — $3,500",
+        "Standard hourly — $165",
+        "Day rate — $1,320",
+        "Retainers — from $1,500/month"
+      ]
     }
   ],
   "credibility": [
     {
+      "title": "Two Decades of Delivery",
+      "body": "20+ years translating complex engineering, user and operational needs into systems that hold up in production — not slideware."
+    },
+    {
+      "title": "$85M in Programs Directed",
+      "body": "More than 20 technology installation projects run end to end: customers, contractors, engineering resources, schedules, corrective actions and delivery."
+    },
+    {
+      "title": "Formally Trained, Not Self-Declared",
+      "body": "MS in Project Management, with Agile Scrum Master, Agile Project Manager and Lean Six Sigma Green Belt certification behind the practice."
+    },
+    {
+      "title": "Fortune 500 Engineering",
+      "body": "Six years as a Lead Test Engineer at Texas Instruments, owning test strategy, release readiness and cross-functional issue resolution for shipping software."
+    },
+    {
       "title": "Veteran Owned",
-      "body": "Built and led by a veteran, with the standards that come with it."
+      "body": "U.S. Army Signal Corps, multi-channel transmission systems. The standards came first; the business was built on them."
     },
     {
-      "title": "Engineering Led",
-      "body": "Technical decisions made by people who build, not just advise."
-    },
-    {
-      "title": "Program Management Expertise",
-      "body": "Structure, governance, and accountability applied to complex work."
-    },
-    {
-      "title": "Systems Thinking",
-      "body": "We solve for the whole operation, not one isolated symptom."
-    },
-    {
-      "title": "Technology Integration",
-      "body": "Existing tools connected and automated instead of replaced wholesale."
-    },
-    {
-      "title": "Product Development",
-      "body": "A working venture portfolio — proof of the same discipline we sell."
+      "title": "Own Products in Production",
+      "body": "A working portfolio of shipped software — the same discipline we sell, proven on our own time and our own money."
     }
-  ]
+  ],
+  "supporting": [
+    {
+      "name": "Strategic Planning",
+      "body": "Mission defined, work prioritised, execution path set with milestones, risks and measurable outcomes."
+    },
+    {
+      "name": "Technical Documentation",
+      "body": "Runbooks, SOPs and operational documentation that capture how the work is really done."
+    },
+    {
+      "name": "Veteran-Owned Venture Support",
+      "body": "Helping veteran entrepreneurs structure, build and scale technology-driven businesses."
+    }
+  ],
+  "entryOffer": {
+    "name": "Systems Audit",
+    "price": "$3,500",
+    "duration": "Two weeks",
+    "body": "A full review of your current tools, integrations, data flow and security posture. You get written findings, a prioritised roadmap and costed recommendations — yours to keep whether or not we do the work.",
+    "note": "The best place to start if you are not sure what you need yet."
+  },
+  "retainers": [
+    {
+      "name": "Essentials",
+      "price": "$1,500",
+      "period": "per month",
+      "body": "Up to 8 hours. Monitoring, maintenance, email support and a quarterly review."
+    },
+    {
+      "name": "Standard",
+      "price": "$3,500",
+      "period": "per month",
+      "body": "Up to 20 hours. Active project work and a monthly working session."
+    },
+    {
+      "name": "Embedded",
+      "price": "$7,500",
+      "period": "per month",
+      "body": "Up to 40 hours. Fractional technical leadership with named availability and priority response."
+    }
+  ],
+  "pricingSummary": "Most engagements run between $3,500 and $30,000. Ongoing support starts at $1,500 per month. Nonprofit and veteran-owned rates are available.",
+  "stats": [
+    {
+      "figure": "20+",
+      "label": "Years in delivery",
+      "note": "Engineering, quality and program management"
+    },
+    {
+      "figure": "$85M",
+      "label": "Programs directed",
+      "note": "20+ technology installation projects, end to end"
+    },
+    {
+      "figure": "6",
+      "label": "Products in production",
+      "note": "Built and operated in house"
+    },
+    {
+      "figure": "MS",
+      "label": "Project Management",
+      "note": "Plus Agile Scrum Master and Lean Six Sigma"
+    }
+  ],
+  "credentials": {
+    "education": [
+      "MS, Project Management — Keller School of Management, DeVry University",
+      "BS, Electronic Engineering Technology — DeVry University",
+      "AS, Electronic Technology — Hallmark College",
+      "Certificate, Multi-Channel Transmission Systems — U.S. Army Signal Center"
+    ],
+    "certifications": [
+      "Agile Scrum Master",
+      "Agile Scrum Professional",
+      "Agile Certified Project Manager",
+      "Lean Six Sigma Green Belt",
+      "Lean Six Sigma Yellow Belt",
+      "Failure Mode Effect Analysis Professional",
+      "Computer Networking & Security",
+      "DISC Leadership Manager"
+    ]
+  },
+  "work": [
+    {
+      "id": "svg-site",
+      "name": "Sovereign Valor Group",
+      "url": "https://sovereignvalorgroup.com",
+      "urlLabel": "sovereignvalorgroup.com",
+      "status": "Live",
+      "body": "Sixteen pages generated from structured data by a custom Node build pipeline, so every page, the sitemap and the structured data stay in sync from one source. Google Analytics 4 with custom conversion events, JSON-LD for search, a working contact form, and a dedicated accessibility statement. Custom responsive design on a continuous deployment pipeline — this site ships more than most builds in its own $9,500 bracket."
+    },
+    {
+      "id": "family-reunion",
+      "name": "Family Reunion: Spades & Bones",
+      "url": "https://fam.sovereignvalorgroup.com",
+      "urlLabel": "fam.sovereignvalorgroup.com",
+      "status": "Live",
+      "body": "A social multiplayer card and dominoes game on Next.js and TypeScript, with a complete Spades rules engine — jokers, nil and blind nil bidding, follow-suit and renege enforcement, full bag and sandbag scoring — plus Partnership All Fives dominoes. Seven AI opponents with distinct written personalities and over 300 rotating lines of table talk. Ten deck themes and ten table backgrounds rendered entirely in CSS, with keyboard navigation and screen-reader support throughout."
+    },
+    {
+      "id": "lottery-pattern-engine",
+      "name": "Lottery Pattern Engine",
+      "url": "https://lpe.sovereignvalorgroup.com",
+      "urlLabel": "lpe.sovereignvalorgroup.com",
+      "status": "Live",
+      "body": "Pattern analysis across Lotto Texas, Powerball, Mega Millions and Pick 3. Data ingestion, statistical analysis and a web interface, running in active maintenance."
+    },
+    {
+      "id": "devotion-after-victory",
+      "name": "Devotion After Victory",
+      "url": "https://devotionaftervictory.com",
+      "urlLabel": "devotionaftervictory.com",
+      "status": "Beta",
+      "body": "A connection platform for the veteran community: native Android and iOS applications alongside the web platform, backed by a managed Postgres service with authentication. A beta access programme with invite codes and member badges, and payment processing integration. 374 commits."
+    },
+    {
+      "id": "accountability-workout-app",
+      "name": "Accountability Workout App",
+      "url": "https://awa.sovereignvalorgroup.com",
+      "urlLabel": "awa.sovereignvalorgroup.com",
+      "status": "Beta",
+      "body": "A platform connecting trainers and clients through video coaching, daily check-ins, and workout and meal planning. Built as a package-managed monorepo on Next.js with a managed Postgres backend, continuous integration, and full product specifications maintained in-repo. 222 commits."
+    },
+    {
+      "id": "vocasa",
+      "name": "Vocasa",
+      "url": "https://voc.sovereignvalorgroup.com",
+      "urlLabel": "voc.sovereignvalorgroup.com",
+      "status": "In development",
+      "body": "A voice-powered application that turns spoken instructions and rough sketches into editable, to-scale residential floor plans. TypeScript and Next.js."
+    },
+    {
+      "id": "lumira",
+      "name": "Lumira",
+      "url": "https://lum.sovereignvalorgroup.com",
+      "urlLabel": "lum.sovereignvalorgroup.com",
+      "status": "In development",
+      "body": "A multisensory virtual reality experience built to make reading and mathematics click for dyslexic learners, through movement, sound and play."
+    }
+  ],
+  "phone": "(817) 767-3607",
+  "phoneHref": "tel:+18177673607"
 }

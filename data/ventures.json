@@ -33,39 +33,6 @@
     "closing": "Devotion After Victory is in beta. Visit the site to explore the platform and join the community."
   },
   {
-    "id": "opsconduit",
-    "name": "OpsConduit",
-    "code": "OPS",
-    "category": "Integration Middleware",
-    "status": "Live",
-    "url": "https://ops.sovereignvalorgroup.com",
-    "urlLabel": "ops.sovereignvalorgroup.com",
-    "ogImage": "/assets/og-image-opsconduit.png",
-    "ogAlt": "OpsConduit — Integration Middleware, a Sovereign Valor Group venture.",
-    "tagline": "A secure integration hub that connects Casebook, monday.com, and Google Workspace — keeping an organization's case records, tasks, files, and calendars automatically in sync.",
-    "metaDescription": "A secure integration hub that connects Casebook, monday.com, and Google Workspace, keeping case records, tasks, files, and calendars automatically in sync. A Sovereign Valor Group venture.",
-    "ogDescription": "A secure integration hub that connects Casebook, monday.com, and Google Workspace — keeping an organization's case records, tasks, files, and calendars automatically in sync.",
-    "atAGlance": [
-      "Casebook · monday.com · Google",
-      "Automatic two-way sync",
-      "Secure by design",
-      "Less manual data entry"
-    ],
-    "sectionEyebrow": "The Product",
-    "sectionHeading": "Built with structure, shipped with discipline.",
-    "cards": [
-      {
-        "title": "What It Does",
-        "body": "A secure integration hub that connects Casebook, monday.com, and Google Workspace, keeping case records, tasks, files, and calendars automatically in sync."
-      },
-      {
-        "title": "Who It's For",
-        "body": "Human-services agencies and operations teams juggling multiple systems who need their records and workflows aligned without manual double-entry."
-      }
-    ],
-    "closing": "OpsConduit is live. Explore the platform, or reach out if your organization needs its systems talking to each other."
-  },
-  {
     "id": "lottery-pattern-engine",
     "name": "Lottery Pattern Engine",
     "code": "LPE",
@@ -136,7 +103,7 @@
     "name": "Accountability Workout App",
     "code": "AWA",
     "category": "Fitness Platform",
-    "status": "In Development",
+    "status": "Beta",
     "url": "https://awa.sovereignvalorgroup.com",
     "urlLabel": "awa.sovereignvalorgroup.com",
     "ogImage": "/assets/og-image-accountability-workout-app.png",
@@ -162,7 +129,7 @@
         "body": "Coaches scaling their practice and clients who want structure, accountability, and expert guidance — wherever they are in the world."
       }
     ],
-    "closing": "The Accountability Workout App is in active development. Preview the current build, or reach out to follow its progress."
+    "closing": "The Accountability Workout App is in beta. Visit the site to explore the platform and start training."
   },
   {
     "id": "lumira",

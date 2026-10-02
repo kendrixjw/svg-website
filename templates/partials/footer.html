@@ -33,6 +33,7 @@
         <div class="footer-legal">
 {{#each site.legal}}          <a href="{{href}}">{{label}}</a>
 {{/each}}          <a href="mailto:{{site.email}}">{{site.email}}</a>
+          <a href="{{site.phoneHref}}" data-event="phone_click" data-cta-location="footer">{{site.phone}}</a>
         </div>
       </div>
     </div>

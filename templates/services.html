@@ -2,7 +2,7 @@
       <div class="container narrow">
         <p class="eyebrow">What We Do</p>
         <h1>Strategy is only useful when it can be <em>executed.</em></h1>
-        <p>Sovereign Valor Group helps organizations move from intent to operating reality — planning the work, structuring the delivery, connecting the systems, and building the products that carry it.</p>
+        <p>Three things, done properly: the site people land on, the systems behind it, and the judgment to run the work. {{site.pricingSummary}}</p>
       </div>
     </section>
 
@@ -11,8 +11,64 @@
 {{#each site.services}}        <article class="card service-card reveal" id="{{id}}">
           <div class="service-icon" aria-hidden="true">{{{iconSvg}}}</div>
           <h2 style="font-size:1.28rem; font-family:'Public Sans',sans-serif; font-weight:700; letter-spacing:-.01em;">{{name}}</h2>
+          <p class="service-short"><strong>{{short}}</strong></p>
           <p>{{body}}</p>
+          <p class="price-from">Starting from <strong>{{priceFrom}}</strong></p>
+          <ul class="price-list">
+{{#each bullets}}            <li>{{.}}</li>
+{{/each}}          </ul>
           <a class="button ghost" href="/contact.html" data-event="service_click" data-service-name="{{name}}" data-cta-location="services_page">Start a Project &rarr;</a>
+        </article>
+{{/each}}      </div>
+    </section>
+
+    <section class="section container">
+      <div class="stat-band reveal">
+{{#each site.stats}}        <div class="stat">
+          <p class="stat-figure">{{figure}}</p>
+          <p class="stat-label">{{label}}</p>
+          <p class="stat-note">{{note}}</p>
+        </div>
+{{/each}}      </div>
+      <p class="stat-caption">Sovereign Valor Group is led by a principal with twenty years in engineering delivery, program management and product quality &mdash; across Fortune 500 engineering, large-scale installation programs, and a portfolio of software built in house.</p>
+    </section>
+
+    <section class="section container">
+      <div class="cta-panel reveal entry-offer">
+        <p class="eyebrow">Start Here</p>
+        <h2>{{site.entryOffer.name}} &mdash; {{site.entryOffer.price}}</h2>
+        <p class="entry-duration">{{site.entryOffer.duration}}</p>
+        <p>{{site.entryOffer.body}}</p>
+        <p><em>{{site.entryOffer.note}}</em></p>
+        <a class="button primary" href="/contact.html" data-event="consultation_click" data-cta-location="entry_offer">Book a Systems Audit</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Ongoing Support</p>
+        <h2>Keep the system running after it ships.</h2>
+        <p>Most problems do not arrive on launch day. A retainer means someone is watching, and you are not starting a new conversation every time something changes.</p>
+      </div>
+      <div class="service-grid">
+{{#each site.retainers}}        <article class="card reveal">
+          <h3 style="font-size:1.15rem; font-family:'Public Sans',sans-serif; font-weight:700;">{{name}}</h3>
+          <p class="price-from"><strong>{{price}}</strong> {{period}}</p>
+          <p>{{body}}</p>
+        </article>
+{{/each}}      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Also Available</p>
+        <h2>Supporting capabilities.</h2>
+        <p>Included within larger engagements, or scoped on their own when that is what the work needs.</p>
+      </div>
+      <div class="service-grid">
+{{#each site.supporting}}        <article class="card reveal">
+          <h3 style="font-size:1.1rem; font-family:'Public Sans',sans-serif; font-weight:700;">{{name}}</h3>
+          <p>{{body}}</p>
         </article>
 {{/each}}      </div>
     </section>
@@ -21,11 +77,11 @@
       <div class="container">
         <div class="section-heading reveal">
           <p class="eyebrow">Proof of Work</p>
-          <h2>We don't just advise on execution — we practice it.</h2>
-          <p>Sovereign Valor Group builds and operates its own portfolio of digital products. The same planning, engineering, and delivery discipline we sell is the discipline we ship with.</p>
+          <h2>We don't just advise on execution &mdash; we practice it.</h2>
+          <p>Sovereign Valor Group designs, builds and operates its own portfolio of software in production. Not prototypes and not case studies written after the fact &mdash; working products you can open right now. The same planning, engineering and delivery discipline we sell is the discipline we ship with.</p>
         </div>
         <div class="hero-actions">
-          <a class="button primary" href="/ventures/" data-event="venture_view" data-cta-location="services_page">Explore Our Ventures &rarr;</a>
+          <a class="button primary" href="/ventures/" data-event="venture_view" data-cta-location="services_page">See What We've Built &rarr;</a>
         </div>
       </div>
     </section>
@@ -33,7 +89,7 @@
     <section class="section container">
       <div class="cta-panel reveal">
         <h2>Ready to start?</h2>
-        <p>Tell us the objective, the obstacles, and the timeline. We'll tell you what it takes to get there.</p>
+        <p>Tell us the objective, the obstacles and the timeline. We'll tell you what it takes to get there &mdash; and what it costs.</p>
         <a class="button primary" href="/contact.html" data-event="consultation_click" data-cta-location="services_footer">Schedule a Consultation</a>
       </div>
     </section>

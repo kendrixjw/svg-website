@@ -95,8 +95,11 @@
 
     <section class="section container narrow">
       <div class="cta-panel">
-        <h2>Prefer email?</h2>
-        <p>Reach us directly and we'll respond with next steps.</p>
-        <a class="button primary" href="mailto:{{site.email}}" data-event="consultation_click" data-cta-location="contact_panel">{{site.email}}</a>
+        <h2>Prefer to reach us directly?</h2>
+        <p>Email or call. Either way you get a person, not a queue.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="mailto:{{site.email}}" data-event="consultation_click" data-cta-location="contact_panel">{{site.email}}</a>
+          <a class="button secondary" href="{{site.phoneHref}}" data-event="phone_click" data-cta-location="contact_panel">{{site.phone}}</a>
+        </div>
       </div>
     </section>

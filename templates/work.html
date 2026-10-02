@@ -1,0 +1,41 @@
+    <section class="page-hero">
+      <div class="container narrow">
+        <p class="eyebrow">Proof of Work</p>
+        <h1>Seven products. Built, shipped, and <em>running.</em></h1>
+        <p>Strategy is only useful when it can be executed. Everything below was designed, built and deployed by Sovereign Valor Group — not mocked up, not outsourced. Each one is a working system you can open right now.</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="service-grid">
+{{#each site.work}}        <article class="card work-card reveal" id="{{id}}">
+          <div class="work-head">
+            <h2 style="font-size:1.28rem; font-family:'Public Sans',sans-serif; font-weight:700; letter-spacing:-.01em;">{{name}}</h2>
+            <span class="status {{statusClass}}">{{status}}</span>
+          </div>
+          <p class="work-url"><a href="{{url}}" target="_blank" rel="noopener" data-event="work_click" data-venture-name="{{name}}" data-venture-url="{{url}}" data-cta-location="work_page">{{urlLabel}} &#8599;</a></p>
+          <p>{{body}}</p>
+        </article>
+{{/each}}      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading reveal">
+        <p class="eyebrow">How</p>
+        <h2>Built the same way, every time.</h2>
+        <p>Each of these started as a plan with milestones, risks and a definition of done — then got built, tested and deployed. That is the same process we bring to client work. Whether it is one integration or an entire technology foundation, the standard does not change.</p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="cta-panel reveal entry-offer">
+        <p class="eyebrow">Start Here</p>
+        <h2>{{site.entryOffer.name}} &mdash; {{site.entryOffer.price}}</h2>
+        <p class="entry-duration">{{site.entryOffer.duration}}</p>
+        <p>{{site.entryOffer.body}}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/contact.html" data-event="consultation_click" data-cta-location="work_page_entry_offer">Start with a Systems Audit</a>
+          <a class="button secondary" href="/services.html#consulting" data-event="pricing_view" data-cta-location="work_page_entry_offer">See Services &amp; Pricing</a>
+        </div>
+      </div>
+    </section>

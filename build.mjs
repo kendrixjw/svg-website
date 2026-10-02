@@ -53,6 +53,15 @@ const ventures = rawVentures.map((v) => {
 
 const services = site.services.map((s) => ({ ...s, iconSvg: iconSvg(s.icon) }));
 
+// Portfolio entries for /work.html. Same status-pill classes and https rule as
+// the ventures, so a typo in the data fails the build rather than the page.
+const work = site.work.map((w) => {
+  if (!w.url.startsWith("https://")) {
+    throw new Error(`Work entry "${w.name}": url must be https (got "${w.url}")`);
+  }
+  return { ...w, statusClass: `status--${slug(w.status)}` };
+});
+
 /* ---------- Structured data ---------- */
 
 function orgJsonLd() {
@@ -150,12 +159,25 @@ page({
 });
 
 page({
+  file: "work.html",
+  template: "work.html",
+  canonicalPath: "/work.html",
+  title: "Our Work | Sovereign Valor Group",
+  description:
+    "Seven products designed, built and deployed by Sovereign Valor Group — the Sovereign Valor Group site itself, Family Reunion: Spades & Bones, the Lottery Pattern Engine, Devotion After Victory, the Accountability Workout App, Vocasa, and Lumira.",
+  ogTitle: "Our Work | Sovereign Valor Group",
+  ogDescription: "Seven products. Built, shipped, and running. Proof of delivery, not case studies written after the fact.",
+  ogImage: "/assets/og-image.png",
+  ogAlt: "Sovereign Valor Group — Honor in planning. Valor in execution.",
+});
+
+page({
   file: "ventures/index.html",
   template: "ventures-index.html",
   canonicalPath: "/ventures/",
   title: "Ventures | Sovereign Valor Group",
   description:
-    "The Sovereign Valor Group venture roster — products conceived, designed, and built under the SVG standard, including Devotion After Victory, OpsConduit, Lottery Pattern Engine, Vocasa, the Accountability Workout App, Lumira, and Family Reunion.",
+    "The Sovereign Valor Group venture roster — products conceived, designed, and built under the SVG standard, including Devotion After Victory, Lottery Pattern Engine, Vocasa, the Accountability Workout App, Lumira, and Family Reunion.",
   ogTitle: "Ventures | Sovereign Valor Group",
   ogDescription: "Products built under the SVG standard — the Sovereign Valor Group venture roster.",
   ogImage: "/assets/og-image.png",
@@ -246,6 +268,7 @@ async function buildPage(p) {
   ctx.site = {
     ...site,
     services,
+    work,
     nav: site.nav.map((n) => ({ ...n, current: n.href === p.canonicalPath })),
   };
 

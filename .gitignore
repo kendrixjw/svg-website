@@ -2,3 +2,5 @@
 .DS_Store
 dist/
 node_modules/
+preview/
+preview-v2/

@@ -1,16 +1,16 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <p class="eyebrow">Veteran-Led &middot; Strategy-Driven &middot; Execution-Focused</p>
-          <h1>Strategy. Technology. <em>Execution.</em></h1>
-          <p class="hero-text">Sovereign Valor Group transforms complex ideas into practical systems, scalable digital products, and mission-driven ventures.</p>
+          <p class="eyebrow">Veteran-Owned &middot; 20 Years of Delivery &middot; Shipped Products</p>
+          <h1>Websites, systems, and the judgment to <em>run the work.</em></h1>
+          <p class="hero-text">Sovereign Valor Group designs and builds websites, integrates the apps and systems behind them, and provides the project-management and engineering consulting to deliver it &mdash; backed by twenty years of delivery and a portfolio of software we built and shipped ourselves.</p>
           <div class="hero-actions">
-            <a class="button primary" href="/services.html" data-event="service_click" data-cta-location="hero">Explore Our Services</a>
-            <a class="button secondary" href="/ventures/" data-event="venture_view" data-cta-location="hero">Explore Our Ventures</a>
+            <a class="button primary" href="/services.html" data-event="pricing_view" data-cta-location="hero">Services &amp; Pricing</a>
+            <a class="button secondary" href="/work.html" data-event="venture_view" data-cta-location="hero">See Our Work</a>
           </div>
         </div>
         <aside class="hero-card">
-          <h2>Core Capabilities</h2>
+          <h2>What We Do</h2>
           <ul>
 {{#each site.services}}            <li>{{name}}</li>
 {{/each}}          </ul>
@@ -34,7 +34,8 @@
     <section id="services" class="section container">
       <div class="section-heading reveal">
         <p class="eyebrow">What We Do</p>
-        <h2>From vision to execution, with structure and accountability.</h2>
+        <h2>Three things, done properly.</h2>
+        <p>The site people land on, the systems behind it, and the judgment to run the work. {{site.pricingSummary}}</p>
       </div>
       <div class="service-grid">
 {{#each site.services}}        <article class="card service-card reveal">
