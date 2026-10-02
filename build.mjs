@@ -293,6 +293,30 @@ Allow: /
 Sitemap: ${site.origin}/sitemap.xml
 `;
 
+/* ---------- Redirect stubs ----------
+ * Pages serves static files only, so a retired URL needs a file to redirect
+ * from. Generated here rather than hand-written at the root, or the next
+ * build would not know about it. Deliberately not in `pages`: that keeps
+ * these out of the sitemap, and noindex stops the stub ranking for itself
+ * while the canonical passes any accumulated signal to the destination.
+ */
+const redirects = [{ from: "ventures/opsconduit.html", to: "/ventures/" }];
+
+const redirectHtml = (to) => `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting&hellip; | ${site.name}</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="${site.origin}${to}" />
+  <meta http-equiv="refresh" content="0; url=${to}" />
+</head>
+<body>
+  <p>This page has moved. <a href="${to}">Continue to ${site.name} ventures</a>.</p>
+</body>
+</html>
+`;
+
 /* ---------- Write ---------- */
 
 await mkdir(OUT, { recursive: true });
@@ -302,6 +326,13 @@ for (const p of pages) {
   await mkdir(path.dirname(dest), { recursive: true });
   await writeFile(dest, await buildPage(p), "utf8");
   console.log(`  ✓ ${p.file}`);
+}
+
+for (const r of redirects) {
+  const dest = path.join(OUT, r.from);
+  await mkdir(path.dirname(dest), { recursive: true });
+  await writeFile(dest, redirectHtml(r.to), "utf8");
+  console.log(`  ✓ ${r.from} → ${r.to}`);
 }
 
 // Everything indexable, straight from the page list — no hand-maintained list to drift.
